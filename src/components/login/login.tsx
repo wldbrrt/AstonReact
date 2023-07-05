@@ -2,10 +2,12 @@ import { Form } from '../form/form';
 import { useAppDispatch } from '../../store/hooks';
 import { setUser } from '../../store/slices/user';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { useNavigate } from 'react-router-dom';
 import React from "react";
 
 function LogIn() {
     const dispatch = useAppDispatch();
+    const navigate = useNavigate()
 
     const handleLogin = (email: string, password: string) => {
         const auth = getAuth();
@@ -16,7 +18,7 @@ function LogIn() {
                     id: user.uid,
                     /* token:  accessToken */
                 }))
-                //TODO: add navigation to main page
+                navigate('/')
 
             })
             .catch(() => alert('Invalid User'))
