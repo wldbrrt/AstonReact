@@ -1,4 +1,7 @@
+import { Input } from './input';
+import { validateEmail, validateRequired, validateMinLength } from '../../features/validation';
 import { useState } from 'react';
+import { reduxForm, Field, InjectedFormProps } from 'redux-form';
 import React from 'react';
 
 interface FormProps {
@@ -6,24 +9,31 @@ interface FormProps {
     handleClick: (email: string, password: string) => void
 }
 
-function Form({ title, handleClick }: FormProps) {
+function RegistrationForm({ title, handleClick }: FormProps) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const minPasswordLength = validateMinLength(6);
 
 
     return (
         <div>
-            <input
-                type="email"
+            <Field
+                name='email'
+                component={Input}
+                type='text'
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder='email'
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
+                placeholder='Email'
+                validate={[validateEmail, validateRequired]}
             />
-            <input
-                type="password"
+            <Field
+                name='password'
+                component={Input}
+                type='password'
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder='password'
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
+                placeholder='Password'
+                validate={[validateRequired, minPasswordLength]}
             />
             <button
                 onClick={() => handleClick(email, password)}
@@ -33,5 +43,9 @@ function Form({ title, handleClick }: FormProps) {
         </div>
     )
 }
+
+const Form = reduxForm<InjectedFormProps, FormProps>({
+    form: 'registrationForm'
+})(RegistrationForm)
 
 export { Form }
