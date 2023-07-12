@@ -1,9 +1,12 @@
+import userReducer from './slices/user'
+import { reducer as formReducer } from 'redux-form';
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 
 
 export const store = configureStore({
   reducer: {
-
+    user: userReducer,
+    form: formReducer,
   },
 });
 
