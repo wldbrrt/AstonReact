@@ -9,11 +9,12 @@ interface FormProps {
     handleClick: (email: string, password: string) => void
 }
 
+const minPasswordLength = validateMinLength(6);
+console.log('rerender')
+
 function RegistrationForm({ title, handleClick }: FormProps) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const minPasswordLength = validateMinLength(6);
-
 
     return (
         <div>
