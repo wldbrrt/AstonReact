@@ -10,7 +10,6 @@ interface FormProps {
 }
 
 const minPasswordLength = validateMinLength(6);
-console.log('rerender')
 
 function RegistrationForm({ title, handleClick }: FormProps) {
     const [email, setEmail] = useState('');
