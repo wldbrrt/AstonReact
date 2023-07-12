@@ -1,7 +1,8 @@
 import React from 'react';
+import { WrappedFieldInputProps } from 'redux-form'
 
 interface InputProps {
-    input: object,
+    input: WrappedFieldInputProps,
     placeholder: string,
     type: string,
     meta: {
@@ -13,7 +14,6 @@ interface InputProps {
 }
 
 function Input({ input, placeholder, type, meta: { touched, error, warning } }: InputProps) {
-
     return (
         <div>
             <label>{placeholder}</label>
