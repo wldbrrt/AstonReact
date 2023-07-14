@@ -39,7 +39,7 @@ function PageControlls({
                 back to 1
             </button>
             <button
-                disabled={!isLastPage}
+                disabled={isLastPage}
                 onClick={() => {
                     onClickHandler(page + 1)
                     scrollToTop()

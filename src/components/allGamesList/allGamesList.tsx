@@ -6,14 +6,14 @@ interface GameListProps {
     pages: number
     size: number
     name: string
-    lastPageSetter: (value: boolean) => void
+    isLastPageSetter: (value: boolean) => void
 }
 
-function AllGamesList({ pages, size, name, lastPageSetter }: GameListProps) {
+function AllGamesList({ pages, size, name, isLastPageSetter }: GameListProps) {
     const { data, isLoading, isFetching, isSuccess, isError, error } =
         useGetGamesQuery({ pageNumber: pages, pageSize: size, gameName: name })
 
-    lastPageSetter(Boolean(data?.next))
+    isLastPageSetter(Boolean(!data?.next))
 
     let content
     if (isLoading || isFetching) {

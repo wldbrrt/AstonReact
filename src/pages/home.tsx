@@ -23,7 +23,7 @@ function Home() {
                 pages={pageNumber}
                 size={20}
                 name={gameName}
-                lastPageSetter={setIsLastPage}
+                isLastPageSetter={setIsLastPage}
             />
             <PageControlls
                 page={pageNumber}
