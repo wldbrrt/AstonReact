@@ -7,6 +7,7 @@ interface Igame {
     name: string
     background_image: string
     released: string
+    rating: number
 }
 interface ApiResponse {
     count: number
@@ -17,8 +18,8 @@ interface ApiResponse {
 
 export interface QuerryParams {
     pageNumber: number
-    pageSize: number
-    gameName: string | undefined
+    pageSize?: number
+    gameName?: string | undefined
 }
 
 export const gamesApi = createApi({
