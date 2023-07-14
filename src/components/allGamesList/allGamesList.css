@@ -1,0 +1,46 @@
+.allGamesList {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 20px;
+    min-height: 100%;
+}
+
+.allGamesList__item {
+    width: 400px;
+    height: 500px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    position: relative;
+    padding: 10px 10px;
+    background-color: #80808050;
+}
+
+.allGamesList__img {
+    display: block;
+    max-height: 60%;
+    max-width: 100%;
+    grid-column: 1 / 3;
+    grid-row: 1/4;
+    justify-self: center;
+}
+
+.allGamesList__name {
+    grid-column: 1 / 3;
+    grid-row: 3 / 4;
+    justify-self: center;
+}
+
+.allGamesList__rating {
+    grid-column: 1/2;
+    grid-row: 4/5;
+    align-self: flex-end;
+}
+
+.allGamesList__date {
+    grid-column: 2/3;
+    grid-row: 4/5;
+    align-self: flex-end;
+    justify-self: flex-end;
+}
