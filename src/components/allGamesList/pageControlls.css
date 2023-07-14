@@ -1,0 +1,10 @@
+.pageControlls {
+    display: flex;
+    justify-content: space-between;
+}
+
+.pageControlls_button {
+    width: 100px;
+    height: 30px;
+    font-size: 20px;
+}

@@ -1,16 +1,35 @@
-import { useAuthorization, useAppDispatch } from '../store/hooks'
+import { useAuthorization } from '../store/hooks'
 import { Search } from '../components/search/search'
-import { removeUser } from '../store/slices/user'
+import { AllGamesList } from '../components/allGamesList/allGamesList'
+import { PageControlls } from '../components/allGamesList/pageControlls'
 import { Navigate } from 'react-router-dom'
-import React from 'react'
+import React, { useState } from 'react'
+import './home.css'
 
 function Home() {
     const { isAuth } = useAuthorization()
+    const [gameName, setGameName] = useState('')
+    const [pageNumber, setPagenumber] = useState(1)
+    const [isLastPage, setIsLastPage] = useState(true)
 
     return isAuth ? (
-        <div>
-            <Search />
+        <div className='home'>
+            <Search
+                onClickHandler={setGameName}
+                onClickPageReset={setPagenumber}
+            />
             <h1>WELCOME</h1>
+            <AllGamesList
+                pages={pageNumber}
+                size={20}
+                name={gameName}
+                isLastPageSetter={setIsLastPage}
+            />
+            <PageControlls
+                page={pageNumber}
+                onClickHandler={setPagenumber}
+                isLastPage={isLastPage}
+            />
         </div>
     ) : (
         <Navigate to='/SignIn' />
