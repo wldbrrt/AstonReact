@@ -4,7 +4,7 @@ import './pageControlls.css'
 interface PageControllsProps {
     page: number
     onClickHandler: (page: number) => void
-    isLastPage: boolean | undefined
+    isLastPage: boolean
 }
 
 function PageControlls({
