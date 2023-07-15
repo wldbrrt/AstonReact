@@ -9,9 +9,10 @@ interface GameListProps {
     pages: number
     size: number
     name: string
+    isInputFocused: boolean
 }
 
-function GameList({ pages, size, name }: GameListProps) {
+function GameList({ pages, size, name, isInputFocused }: GameListProps) {
     const dispatch = useAppDispatch()
     const navigate = useNavigate()
     const { data, isLoading, isFetching, isSuccess, isError, error } =
@@ -54,7 +55,9 @@ function GameList({ pages, size, name }: GameListProps) {
     return (
         <div
             className={
-                name ? 'search__list' : 'search__list search__list_hidden'
+                name && isInputFocused
+                    ? 'search__list'
+                    : 'search__list search__list_hidden'
             }
         >
             {content}
