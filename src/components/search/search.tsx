@@ -19,12 +19,14 @@ function Search({ onClickHandler, onClickPageReset }: SearchProps) {
             <SearchInput
                 onChangeHandler={setGameName}
                 onFocusHandler={setIsFocused}
+                gameName={gameName}
             />
             <button
                 className='search__button'
                 onClick={() => {
                     onClickHandler(debouncedValue)
                     onClickPageReset(1)
+                    setGameName('')
                 }}
             >
                 Search
