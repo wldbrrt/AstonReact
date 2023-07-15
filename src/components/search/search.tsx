@@ -14,9 +14,10 @@ function Search({ onClickHandler, onClickPageReset }: SearchProps) {
     const debouncedValue = useDebounce(gameName, 800)
 
     return (
-        <div>
+        <div className='search'>
             <SearchInput onChangeHandler={setGameName} />
             <button
+                className='search__button'
                 onClick={() => {
                     onClickHandler(debouncedValue)
                     onClickPageReset(1)

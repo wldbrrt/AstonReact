@@ -8,6 +8,7 @@ interface SearchInputProps {
 function SearchInput({ onChangeHandler }: SearchInputProps) {
     return (
         <input
+            className='search__input'
             type='text'
             placeholder='Enter game name'
             name='search'

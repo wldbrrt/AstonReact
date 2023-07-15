@@ -1,0 +1,12 @@
+.header__nav {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    font-size: 30px;
+}
+
+.header__button {
+    font-size: 30px;
+    border-radius: 20px;
+    padding: 5px 5px;
+}
