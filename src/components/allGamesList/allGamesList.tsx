@@ -2,7 +2,7 @@ import { useGetGamesQuery } from '../../store/slices/gamesAPI'
 import { useAppDispatch } from '../../store/hooks'
 import { setGame } from '../../store/slices/game'
 import { useNavigate } from 'react-router-dom'
-import React from 'react'
+import React, { useEffect } from 'react'
 import './allGamesList.css'
 
 interface GameListProps {
@@ -18,7 +18,9 @@ function AllGamesList({ pages, size, name, isLastPageSetter }: GameListProps) {
     const { data, isLoading, isFetching, isSuccess, isError, error } =
         useGetGamesQuery({ pageNumber: pages, pageSize: size, gameName: name })
 
-    isLastPageSetter(Boolean(!data?.next))
+    useEffect(() => {
+        isLastPageSetter(Boolean(!data?.next))
+    })
 
     let content
     if (isLoading || isFetching) {
