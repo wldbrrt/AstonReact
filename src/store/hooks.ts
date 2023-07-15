@@ -1,36 +1,40 @@
-import { useEffect, useState } from 'react';
-import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
-import type { RootState, AppDispatch } from './store';
+import { useEffect, useState } from 'react'
+import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
+import type { RootState, AppDispatch } from './store'
 
 // Use throughout your app instead of plain `useDispatch` and `useSelector`
-export const useAppDispatch = () => useDispatch<AppDispatch>();
-export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
+export const useAppDispatch = () => useDispatch<AppDispatch>()
+export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
 
 export const useAuthorization = () => {
-    const { email, token, id } = useAppSelector(state => state.user);
+    const { email, token, id } = useAppSelector(state => state.user)
 
     return {
         isAuth: !!email,
         email,
         token,
-        id
+        id,
     }
 }
 
+export const useGameInfo = () => {
+    const { id } = useAppSelector(state => state.game)
+
+    return { id }
+}
+
 export function useDebounce<T>(value: T | string, delay: number) {
-    const [debouncedValue, setDebouncedValue] = useState(value);
+    const [debouncedValue, setDebouncedValue] = useState(value)
 
     useEffect(() => {
         const handler = setTimeout(() => {
-            setDebouncedValue(value);
-        }, delay);
+            setDebouncedValue(value)
+        }, delay)
 
         return () => {
-            clearTimeout(handler);
-        };
-    },
-        [value]
-    );
+            clearTimeout(handler)
+        }
+    }, [value])
 
-    return debouncedValue;
+    return debouncedValue
 }
