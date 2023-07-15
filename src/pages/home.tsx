@@ -21,7 +21,7 @@ function Home() {
             <h1>WELCOME</h1>
             <AllGamesList
                 pages={pageNumber}
-                size={20}
+                size={21}
                 name={gameName}
                 isLastPageSetter={setIsLastPage}
             />
