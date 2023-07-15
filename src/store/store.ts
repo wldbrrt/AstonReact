@@ -1,4 +1,5 @@
 import userReducer from './slices/user'
+import gameReducer from './slices/game'
 import { gamesApi } from './slices/gamesAPI'
 import { reducer as formReducer } from 'redux-form'
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit'
@@ -7,6 +8,7 @@ export const store = configureStore({
     reducer: {
         user: userReducer,
         form: formReducer,
+        game: gameReducer,
         [gamesApi.reducerPath]: gamesApi.reducer,
     },
     middleware: getDefaultMiddleware => {
