@@ -7,9 +7,6 @@ function GameCard() {
     const params = useParams()
     const { data, isLoading, isFetching, isSuccess, isError, error } =
         useGetSingleGameQuery({ gameId: Number(params.id) })
-
-    console.log(data)
-
     let content
 
     if (isLoading || isFetching) {

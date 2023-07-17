@@ -15,8 +15,6 @@ function GameList({ pages, size, name, isInputFocused }: GameListProps) {
     const { data, isLoading, isFetching, isSuccess, isError, error } =
         useGetGamesQuery({ pageNumber: pages, pageSize: size, gameName: name })
 
-    console.log(data)
-
     let content
     if (isLoading || isFetching) {
         content = 'LOADING'
