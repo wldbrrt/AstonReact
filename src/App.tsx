@@ -34,7 +34,7 @@ function App() {
                         element={<div>HISTORY </div>}
                     />
                     <Route
-                        path='/Game'
+                        path='/Game/:id'
                         element={<Game />}
                     />
                 </Routes>

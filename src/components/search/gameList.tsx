@@ -1,6 +1,4 @@
 import { useGetGamesQuery } from '../../store/slices/gamesAPI'
-import { useAppDispatch } from '../../store/hooks'
-import { setGame } from '../../store/slices/game'
 import { useNavigate } from 'react-router-dom'
 import React from 'react'
 import './gameList.css'
@@ -13,7 +11,6 @@ interface GameListProps {
 }
 
 function GameList({ pages, size, name, isInputFocused }: GameListProps) {
-    const dispatch = useAppDispatch()
     const navigate = useNavigate()
     const { data, isLoading, isFetching, isSuccess, isError, error } =
         useGetGamesQuery({ pageNumber: pages, pageSize: size, gameName: name })
@@ -30,14 +27,7 @@ function GameList({ pages, size, name, isInputFocused }: GameListProps) {
             <div
                 key={game.id}
                 className='search__item'
-                onClick={() => {
-                    dispatch(
-                        setGame({
-                            id: game.id,
-                        })
-                    )
-                    navigate('/Game')
-                }}
+                onClick={() => navigate(`/Game/${game.id}`)}
             >
                 <img
                     className='search__img'
