@@ -17,12 +17,6 @@ export const useAuthorization = () => {
     }
 }
 
-export const useGameInfo = () => {
-    const { id } = useAppSelector(state => state.game)
-
-    return { id }
-}
-
 export function useDebounce<T>(value: T | string, delay: number) {
     const [debouncedValue, setDebouncedValue] = useState(value)
 
