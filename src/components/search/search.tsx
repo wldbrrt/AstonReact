@@ -11,16 +11,22 @@ interface SearchProps {
 
 function Search({ onClickHandler, onClickPageReset }: SearchProps) {
     const [gameName, setGameName] = useState('')
+    const [isFocused, setIsFocused] = useState(false)
     const debouncedValue = useDebounce(gameName, 800)
 
     return (
         <div className='search'>
-            <SearchInput onChangeHandler={setGameName} />
+            <SearchInput
+                onChangeHandler={setGameName}
+                onFocusHandler={setIsFocused}
+                gameName={gameName}
+            />
             <button
                 className='search__button'
                 onClick={() => {
                     onClickHandler(debouncedValue)
                     onClickPageReset(1)
+                    setGameName('')
                 }}
             >
                 Search
@@ -29,6 +35,7 @@ function Search({ onClickHandler, onClickPageReset }: SearchProps) {
                 pages={1}
                 size={5}
                 name={debouncedValue}
+                isInputFocused={isFocused}
             />
         </div>
     )

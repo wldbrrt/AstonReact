@@ -1,19 +1,23 @@
-import { Input } from './input';
-import { validateEmail, validateRequired, validateMinLength } from '../../features/validation';
-import { useState } from 'react';
-import { reduxForm, Field, InjectedFormProps } from 'redux-form';
-import React from 'react';
+import { Input } from './input'
+import {
+    validateEmail,
+    validateRequired,
+    validateMinLength,
+} from '../../features/validation'
+
+import { reduxForm, Field, InjectedFormProps } from 'redux-form'
+import React, { useState } from 'react'
 
 interface FormProps {
-    title: string,
+    title: string
     handleClick: (email: string, password: string) => void
 }
 
-const minPasswordLength = validateMinLength(6);
+const minPasswordLength = validateMinLength(6)
 
 function RegistrationForm({ title, handleClick }: FormProps) {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
 
     return (
         <div>
@@ -22,7 +26,9 @@ function RegistrationForm({ title, handleClick }: FormProps) {
                 component={Input}
                 type='text'
                 value={email}
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                    setEmail(e.target.value)
+                }
                 placeholder='Email'
                 validate={[validateEmail, validateRequired]}
             />
@@ -31,13 +37,13 @@ function RegistrationForm({ title, handleClick }: FormProps) {
                 component={Input}
                 type='password'
                 value={password}
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                    setPassword(e.target.value)
+                }
                 placeholder='Password'
                 validate={[validateRequired, minPasswordLength]}
             />
-            <button
-                onClick={() => handleClick(email, password)}
-            >
+            <button onClick={() => handleClick(email, password)}>
                 {title}
             </button>
         </div>
@@ -45,7 +51,7 @@ function RegistrationForm({ title, handleClick }: FormProps) {
 }
 
 const Form = reduxForm<InjectedFormProps, FormProps>({
-    form: 'registrationForm'
+    form: 'registrationForm',
 })(RegistrationForm)
 
 export { Form }
