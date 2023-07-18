@@ -1,5 +1,6 @@
 import { useAuthorization, useAppDispatch } from '../../store/hooks'
 import { removeUser } from '../../store/slices/user'
+import { getAuth, signOut } from 'firebase/auth'
 import { NavLink, useNavigate } from 'react-router-dom'
 import React from 'react'
 import './navigation.css'
@@ -17,7 +18,16 @@ function Navigation() {
             </nav>
             <button
                 className='header__button'
-                onClick={() => dispatch(removeUser())}
+                onClick={() => {
+                    const auth = getAuth()
+                    signOut(auth)
+                        .then(() => {
+                            dispatch(removeUser())
+                            localStorage.clear()
+                            navigate('/SignIn')
+                        })
+                        .catch(error => alert(error))
+                }}
             >
                 Log Out from {email}
             </button>
