@@ -6,11 +6,12 @@ import React from 'react'
 import './navigation.css'
 
 function Navigation() {
-    const { isAuth, email } = useAuthorization()
+    const { email } = useAuthorization()
     const dispatch = useAppDispatch()
     const navigate = useNavigate()
+    const isUserSignedIn = localStorage.getItem('isUserSignedIn')
 
-    return isAuth ? (
+    return isUserSignedIn ? (
         <div className='header__nav'>
             <nav className='header__nav'>
                 <NavLink to='/Favorites'>Favorites</NavLink>
