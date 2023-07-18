@@ -24,7 +24,7 @@ function Search({ onClickHandler, onClickPageReset }: SearchProps) {
             <button
                 className='search__button'
                 onClick={() => {
-                    onClickHandler(debouncedValue)
+                    onClickHandler(gameName)
                     onClickPageReset(1)
                     setGameName('')
                 }}
