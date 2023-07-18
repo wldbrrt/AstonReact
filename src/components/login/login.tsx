@@ -1,12 +1,14 @@
 import { Form } from '../form/form'
 import { useAppDispatch } from '../../store/hooks'
-import { setUser } from '../../store/slices/user'
+import { setUser, setUserHistory } from '../../store/slices/user'
+import { database } from '../../firebase'
 import {
     browserSessionPersistence,
     getAuth,
     setPersistence,
     signInWithEmailAndPassword,
 } from 'firebase/auth'
+import { doc, getDoc } from 'firebase/firestore'
 import { useNavigate } from 'react-router-dom'
 import React from 'react'
 
@@ -14,9 +16,9 @@ function LogIn() {
     const dispatch = useAppDispatch()
     const navigate = useNavigate()
 
-    const handleLogin = (email: string, password: string) => {
+    const handleLogin = async (email: string, password: string) => {
         const auth = getAuth()
-        setPersistence(auth, browserSessionPersistence)
+        await setPersistence(auth, browserSessionPersistence)
             .then(() => {
                 return signInWithEmailAndPassword(auth, email, password)
             })
@@ -27,9 +29,23 @@ function LogIn() {
                         id: user.uid,
                     })
                 )
-                navigate(`/`)
             })
             .catch(() => alert('Invalid User'))
+
+        await getDoc(doc(database, 'Users', `${email}`))
+            .then(res => {
+                if (res.exists()) {
+                    const data = res.data()
+                    dispatch(
+                        setUserHistory({
+                            history: data.history,
+                        })
+                    )
+                }
+            })
+            .catch(err => alert(err))
+        localStorage.setItem('isUserSignedIn', 'true')
+        navigate(`/`)
     }
 
     return (
