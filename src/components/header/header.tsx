@@ -10,7 +10,6 @@ function Header() {
         <header className='header'>
             <img
                 onClick={() => {
-                    localStorage.clear()
                     navigate('/')
                 }}
                 src={logo}
