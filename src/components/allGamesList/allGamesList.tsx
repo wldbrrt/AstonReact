@@ -13,11 +13,15 @@ interface GameListProps {
 function AllGamesList({ pages, size, name, isLastPageSetter }: GameListProps) {
     const navigate = useNavigate()
     const { data, isLoading, isFetching, isSuccess, isError, error } =
-        useGetGamesQuery({ pageNumber: pages, pageSize: size, gameName: name })
+        useGetGamesQuery({
+            pageNumber: pages,
+            pageSize: size,
+            gameName: name,
+        })
 
     useEffect(() => {
         if (data) isLastPageSetter(Boolean(!data.next))
-    })
+    }, [data])
 
     let content
     if (isLoading || isFetching) {

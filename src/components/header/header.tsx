@@ -1,18 +1,25 @@
-import './header.css';
-import { Navigation } from './navigation';
-import logo from '../../assets/logo.png';
-import { NavLink } from 'react-router-dom';
-import React from 'react';
+import './header.css'
+import { Navigation } from './navigation'
+import logo from '../../assets/logo.png'
+import { NavLink, useNavigate } from 'react-router-dom'
+import React from 'react'
 
 function Header() {
+    const navigate = useNavigate()
     return (
         <header className='header'>
-            <NavLink to='/'>
-                <img src={logo} alt="logo" className='header__logo' />
-            </NavLink>
+            <img
+                onClick={() => {
+                    localStorage.clear()
+                    navigate('/')
+                }}
+                src={logo}
+                alt='logo'
+                className='header__logo'
+            />
             <Navigation />
         </header>
     )
 }
 
-export { Header };
+export { Header }

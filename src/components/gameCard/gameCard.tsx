@@ -3,10 +3,13 @@ import { useParams } from 'react-router-dom'
 import React from 'react'
 import './gameCard.css'
 
-function GameCard() {
-    const params = useParams()
+interface IgameCardProps {
+    gameId: number
+}
+
+function GameCard({ gameId }: IgameCardProps) {
     const { data, isLoading, isFetching, isSuccess, isError, error } =
-        useGetSingleGameQuery({ gameId: Number(params.id) })
+        useGetSingleGameQuery({ gameId: gameId })
     let content
 
     if (isLoading || isFetching) {
