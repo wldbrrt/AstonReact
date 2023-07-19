@@ -44,6 +44,8 @@ export const firestoreApi = createApi({
                     })
                     return { data: ref }
                 } catch (error: any) {
+                    // У меня тут any, но я не придумал чем это заменить и не уверен, что стоит.
+                    // Прошу оставить коммент по этому поводу:)
                     return { error: error.message }
                 }
             },
