@@ -1,6 +1,12 @@
 import { SearchInput } from './searchInput'
 import { GameList } from './gameList'
-import { useDebounce } from '../../store/hooks'
+import { getCurrentDate } from '../../features/getCurrentDate'
+import { useAuthorization, useDebounce } from '../../store/hooks'
+import {
+    useGetUserHistoryQuery,
+    useLazyGetUserHistoryQuery,
+    useLazyUpdateUserHistoryQuery,
+} from '../../store/slices/firestoreApi'
 import React, { useState } from 'react'
 import './search.css'
 
@@ -10,6 +16,9 @@ interface SearchProps {
 }
 
 function Search({ onClickHandler, onClickPageReset }: SearchProps) {
+    const { email } = useAuthorization()
+    const [triggerUpdateData] = useLazyUpdateUserHistoryQuery()
+    const [triggerGetData] = useLazyGetUserHistoryQuery()
     const [gameName, setGameName] = useState('')
     const [isFocused, setIsFocused] = useState(false)
     const debouncedValue = useDebounce(gameName, 800)
@@ -23,10 +32,18 @@ function Search({ onClickHandler, onClickPageReset }: SearchProps) {
             />
             <button
                 className='search__button'
-                onClick={() => {
+                onClick={async () => {
                     onClickHandler(gameName)
                     onClickPageReset(1)
                     setGameName('')
+                    await triggerUpdateData({
+                        email: email,
+                        name: gameName,
+                        date: getCurrentDate(),
+                    })
+                    await triggerGetData({
+                        email: email,
+                    })
                 }}
             >
                 Search
