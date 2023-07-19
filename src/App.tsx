@@ -3,10 +3,9 @@ import { SignUp } from './pages/signup'
 import { SignIn } from './pages/signin'
 import { Home } from './pages/home'
 import { Game } from './pages/game'
+import { History } from './pages/history'
 import { useAppDispatch } from './store/hooks'
-import { removeUser, setUser, setUserHistory } from './store/slices/user'
-import { database } from './firebase'
-import { getDoc, doc } from 'firebase/firestore'
+import { removeUser, setUser } from './store/slices/user'
 import { getAuth, onAuthStateChanged } from 'firebase/auth'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import React, { useEffect } from 'react'
@@ -24,18 +23,6 @@ function App() {
                         id: user.uid,
                     })
                 )
-                getDoc(doc(database, 'Users', `${user.email}`))
-                    .then(res => {
-                        if (res.exists()) {
-                            const data = res.data()
-                            dispatch(
-                                setUserHistory({
-                                    history: data.history,
-                                })
-                            )
-                        }
-                    })
-                    .catch(err => alert(err))
                 localStorage.setItem('isUserSignedIn', 'true')
             } else {
                 dispatch(removeUser())
@@ -68,7 +55,7 @@ function App() {
                     />
                     <Route
                         path='/History'
-                        element={<div>HISTORY </div>}
+                        element={<History />}
                     />
                     <Route
                         path='/Game/:id'
