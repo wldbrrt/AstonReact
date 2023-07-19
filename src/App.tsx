@@ -27,6 +27,8 @@ function App() {
             } else {
                 dispatch(removeUser())
                 localStorage.setItem('isUserSignedIn', '')
+                localStorage.setItem('gameName', '')
+                localStorage.setItem('pageNumber', '1')
             }
         })
         return unsubscribe()
