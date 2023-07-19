@@ -17,11 +17,6 @@ export const useAuthorization = () => {
     }
 }
 
-export const useUserHistory = () => {
-    const { history } = useAppSelector(state => state.user)
-    return { history }
-}
-
 export function useDebounce<T>(value: T | string, delay: number) {
     const [debouncedValue, setDebouncedValue] = useState(value)
 
