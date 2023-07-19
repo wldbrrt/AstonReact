@@ -36,14 +36,16 @@ function Search({ onClickHandler, onClickPageReset }: SearchProps) {
                     onClickHandler(gameName)
                     onClickPageReset(1)
                     setGameName('')
-                    await triggerUpdateData({
-                        email: email,
-                        name: gameName,
-                        date: getCurrentDate(),
-                    })
-                    await triggerGetData({
-                        email: email,
-                    })
+                    if (gameName) {
+                        await triggerUpdateData({
+                            email: email,
+                            name: gameName,
+                            date: getCurrentDate(),
+                        })
+                        await triggerGetData({
+                            email: email,
+                        })
+                    }
                 }}
             >
                 Search
