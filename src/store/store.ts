@@ -1,3 +1,4 @@
+import { firestoreApi } from './slices/firestoreApi'
 import userReducer from './slices/user'
 import { gamesApi } from './slices/gamesAPI'
 import { reducer as formReducer } from 'redux-form'
@@ -8,9 +9,13 @@ export const store = configureStore({
         user: userReducer,
         form: formReducer,
         [gamesApi.reducerPath]: gamesApi.reducer,
+        [firestoreApi.reducerPath]: firestoreApi.reducer,
     },
     middleware: getDefaultMiddleware => {
-        return getDefaultMiddleware().concat(gamesApi.middleware)
+        return getDefaultMiddleware().concat(
+            gamesApi.middleware,
+            firestoreApi.middleware
+        )
     },
 })
 
