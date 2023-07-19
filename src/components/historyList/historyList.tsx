@@ -1,5 +1,6 @@
 import { useGetUserHistoryQuery } from '../../store/slices/firestoreApi'
 import { useAuthorization } from '../../store/hooks'
+import { useNavigate } from 'react-router-dom'
 import React from 'react'
 import './historyList.css'
 
@@ -9,6 +10,7 @@ function HistoryList() {
         useGetUserHistoryQuery({
             email: email,
         })
+    const navigate = useNavigate()
 
     if (isSuccess) console.log(data)
     let content
@@ -21,6 +23,13 @@ function HistoryList() {
             <div
                 key={index}
                 className='histotyList__item'
+                onClick={() => {
+                    if (e.searchReq) {
+                        localStorage.setItem('gameName', e.searchReq)
+                        localStorage.setItem('pageNumber', '1')
+                        navigate('/')
+                    }
+                }}
             >
                 <div className='histotyList__name'>{e.searchReq}</div>
                 <div className='histotyList__date'>{e.date}</div>
