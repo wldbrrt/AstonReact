@@ -6,12 +6,11 @@ import React from 'react'
 import './navigation.css'
 
 function Navigation() {
-    const { email } = useAuthorization()
+    const { email, isAuth } = useAuthorization()
     const dispatch = useAppDispatch()
     const navigate = useNavigate()
-    const isUserSignedIn = localStorage.getItem('isUserSignedIn')
 
-    return isUserSignedIn ? (
+    return isAuth ? (
         <div className='header__nav'>
             <nav className='header__nav'>
                 <NavLink to='/Favorites'>Favorites</NavLink>
@@ -24,7 +23,6 @@ function Navigation() {
                     signOut(auth)
                         .then(() => {
                             dispatch(removeUser())
-                            localStorage.clear()
                             navigate('/SignIn')
                         })
                         .catch(error => alert(error))

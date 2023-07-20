@@ -1,10 +1,11 @@
 import { useGetUserHistoryQuery } from '../../store/slices/firestoreApi'
 import { useAuthorization } from '../../store/hooks'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import React from 'react'
 import './historyList.css'
 
 function HistoryList() {
+    const [value, setValue] = useSearchParams()
     const { email } = useAuthorization()
     const { data, isSuccess, isLoading, isFetching, error, isError } =
         useGetUserHistoryQuery({
@@ -12,7 +13,6 @@ function HistoryList() {
         })
     const navigate = useNavigate()
 
-    if (isSuccess) console.log(data)
     let content
     if (isFetching || isLoading) {
         content = 'is Loading'
@@ -25,9 +25,15 @@ function HistoryList() {
                 className='histotyList__item'
                 onClick={() => {
                     if (e.searchReq) {
-                        localStorage.setItem('gameName', e.searchReq)
-                        localStorage.setItem('pageNumber', '1')
-                        navigate('/')
+                        setValue(params => {
+                            params.set('search', `${e.searchReq}`)
+                            params.set('page', '1')
+                            return params
+                        })
+                        navigate({
+                            pathname: '/',
+                            search: `?${value}`,
+                        })
                     }
                 }}
             >
