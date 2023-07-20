@@ -14,9 +14,9 @@ function LogIn() {
     const dispatch = useAppDispatch()
     const navigate = useNavigate()
 
-    const handleLogin = (email: string, password: string) => {
+    const handleLogin = async (email: string, password: string) => {
         const auth = getAuth()
-        setPersistence(auth, browserSessionPersistence)
+        await setPersistence(auth, browserSessionPersistence)
             .then(() => {
                 return signInWithEmailAndPassword(auth, email, password)
             })
@@ -27,9 +27,9 @@ function LogIn() {
                         id: user.uid,
                     })
                 )
-                navigate(`/`)
             })
             .catch(() => alert('Invalid User'))
+        navigate(`/`)
     }
 
     return (

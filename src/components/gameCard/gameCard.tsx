@@ -1,5 +1,4 @@
 import { useGetSingleGameQuery } from '../../store/slices/gamesAPI'
-import { useParams } from 'react-router-dom'
 import React from 'react'
 import './gameCard.css'
 

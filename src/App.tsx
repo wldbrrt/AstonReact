@@ -3,11 +3,17 @@ import { SignUp } from './pages/signup'
 import { SignIn } from './pages/signin'
 import { Home } from './pages/home'
 import { Game } from './pages/game'
+import { History } from './pages/history'
+import { useAppDispatch, useFirebaseAuth } from './store/hooks'
+import { removeUser, setUser } from './store/slices/user'
+import { getAuth, onAuthStateChanged } from 'firebase/auth'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import React from 'react'
+import React, { useEffect } from 'react'
 import './App.css'
 
 function App() {
+    useFirebaseAuth()
+
     return (
         <div className='App'>
             <BrowserRouter>
@@ -31,7 +37,7 @@ function App() {
                     />
                     <Route
                         path='/History'
-                        element={<div>HISTORY </div>}
+                        element={<History />}
                     />
                     <Route
                         path='/Game/:id'

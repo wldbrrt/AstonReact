@@ -1,0 +1,41 @@
+.histotyList {
+    min-height: 80vh;
+    padding: 10px 20px;
+    font-size: 24px;
+    display: grid;
+    grid-template-rows: 80px 1fr;
+    background-color: #00000050;
+}
+
+.historyList__button {
+    font-size: 20px;
+    border-radius: 10px;
+    height: 30px;
+    width: 200px;
+    justify-self: flex-end;
+    align-self: center;
+}
+
+.historyList__container {
+    width: 60%;
+    justify-self: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.histotyList__item {
+    display: flex;
+    justify-content: space-between;
+    background-color: #00000080;
+    border-radius: 20px;
+    border: solid black 2px;
+    color: whitesmoke;
+    padding: 5px 10px;
+}
+
+.histotyList__name {
+}
+
+.histotyList__date {
+}

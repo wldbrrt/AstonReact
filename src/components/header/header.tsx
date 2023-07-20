@@ -1,17 +1,18 @@
 import './header.css'
 import { Navigation } from './navigation'
 import logo from '../../assets/logo.png'
-import { NavLink, useNavigate } from 'react-router-dom'
+import { useAuthorization } from '../../store/hooks'
+import { useNavigate } from 'react-router-dom'
 import React from 'react'
 
 function Header() {
     const navigate = useNavigate()
+    const { isAuth } = useAuthorization()
     return (
         <header className='header'>
             <img
                 onClick={() => {
-                    localStorage.clear()
-                    navigate('/')
+                    isAuth ? navigate('/') : navigate('/SignIn')
                 }}
                 src={logo}
                 alt='logo'

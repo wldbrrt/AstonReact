@@ -5,6 +5,7 @@ import {
     validateMinLength,
 } from '../../features/validation'
 
+import { useAuthorization } from '../../store/hooks'
 import { reduxForm, Field, InjectedFormProps } from 'redux-form'
 import React, { useState } from 'react'
 
@@ -16,6 +17,7 @@ interface FormProps {
 const minPasswordLength = validateMinLength(6)
 
 function RegistrationForm({ title, handleClick }: FormProps) {
+    const { isAuth } = useAuthorization()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
@@ -43,7 +45,10 @@ function RegistrationForm({ title, handleClick }: FormProps) {
                 placeholder='Password'
                 validate={[validateRequired, minPasswordLength]}
             />
-            <button onClick={() => handleClick(email, password)}>
+            <button
+                disabled={isAuth}
+                onClick={() => handleClick(email, password)}
+            >
                 {title}
             </button>
         </div>

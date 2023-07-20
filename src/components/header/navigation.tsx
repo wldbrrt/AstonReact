@@ -6,7 +6,7 @@ import React from 'react'
 import './navigation.css'
 
 function Navigation() {
-    const { isAuth, email } = useAuthorization()
+    const { email, isAuth } = useAuthorization()
     const dispatch = useAppDispatch()
     const navigate = useNavigate()
 
@@ -23,7 +23,6 @@ function Navigation() {
                     signOut(auth)
                         .then(() => {
                             dispatch(removeUser())
-                            localStorage.clear()
                             navigate('/SignIn')
                         })
                         .catch(error => alert(error))
