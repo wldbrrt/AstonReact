@@ -4,7 +4,7 @@ import { SignIn } from './pages/signin'
 import { Home } from './pages/home'
 import { Game } from './pages/game'
 import { History } from './pages/history'
-import { useAppDispatch } from './store/hooks'
+import { useAppDispatch, useFirebaseAuth } from './store/hooks'
 import { removeUser, setUser } from './store/slices/user'
 import { getAuth, onAuthStateChanged } from 'firebase/auth'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
@@ -12,27 +12,7 @@ import React, { useEffect } from 'react'
 import './App.css'
 
 function App() {
-    const dispatch = useAppDispatch()
-    useEffect(() => {
-        const auth = getAuth()
-        const unsubscribe = onAuthStateChanged(auth, user => {
-            if (user) {
-                dispatch(
-                    setUser({
-                        email: user.email,
-                        id: user.uid,
-                    })
-                )
-                localStorage.setItem('isUserSignedIn', 'true')
-            } else {
-                dispatch(removeUser())
-                localStorage.setItem('isUserSignedIn', '')
-                localStorage.setItem('gameName', '')
-                localStorage.setItem('pageNumber', '1')
-            }
-        })
-        return unsubscribe()
-    }, [])
+    useFirebaseAuth()
 
     return (
         <div className='App'>
