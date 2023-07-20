@@ -52,7 +52,14 @@ export const gamesApi = createApi({
                 },
             }),
             transformResponse: (responce: Igame) => {
-                return responce
+                return {
+                    id: responce.id,
+                    name: responce.name,
+                    background_image: responce.background_image,
+                    released: responce.released,
+                    rating: responce.rating,
+                    description_raw: responce.description_raw,
+                }
             },
         }),
     }),
