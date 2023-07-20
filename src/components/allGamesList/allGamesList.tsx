@@ -1,5 +1,5 @@
 import { useGetGamesQuery } from '../../store/slices/gamesAPI'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import React, { useEffect } from 'react'
 import './allGamesList.css'
 
@@ -11,12 +11,13 @@ interface GameListProps {
 }
 
 function AllGamesList({ pages, size, name, isLastPageSetter }: GameListProps) {
+    const [value, setValue] = useSearchParams()
     const navigate = useNavigate()
     const { data, isLoading, isFetching, isSuccess, isError, error } =
         useGetGamesQuery({
-            pageNumber: pages,
+            pageNumber: Number(value.get('page')) || 1,
             pageSize: size,
-            gameName: name,
+            gameName: value.get('search') || '',
         })
 
     useEffect(() => {

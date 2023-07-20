@@ -2,27 +2,23 @@ import { Search } from '../components/search/search'
 import { AllGamesList } from '../components/allGamesList/allGamesList'
 import { PageControlls } from '../components/allGamesList/pageControlls'
 import { useAuthorization } from '../store/hooks'
-import { Navigate } from 'react-router-dom'
+import { Navigate, useSearchParams } from 'react-router-dom'
 import React, { useEffect, useState } from 'react'
 import './home.css'
 
 function Home() {
     const { isAuth } = useAuthorization()
-
-    const storageName = localStorage.getItem('gameName')
-        ? String(localStorage.getItem('gameName'))
-        : ''
-    const storagePage = localStorage.getItem('pageNumber')
-        ? Number(localStorage.getItem('pageNumber'))
-        : 1
-
-    const [gameName, setGameName] = useState(storageName)
-    const [pageNumber, setPagenumber] = useState(storagePage)
+    const [value, setValue] = useSearchParams()
+    const [gameName, setGameName] = useState(value.get('search') || '')
+    const [pageNumber, setPagenumber] = useState(Number(value.get('page')) || 1)
     const [isLastPage, setIsLastPage] = useState(true)
 
     useEffect(() => {
-        localStorage.setItem('gameName', gameName)
-        localStorage.setItem('pageNumber', String(pageNumber))
+        setValue(params => {
+            params.set('search', gameName)
+            params.set('page', String(pageNumber))
+            return params
+        })
     }, [gameName, pageNumber])
 
     return isAuth ? (
