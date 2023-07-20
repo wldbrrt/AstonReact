@@ -24,7 +24,6 @@ function Register() {
                 trigger({ email: email })
             })
             .catch(console.error)
-        localStorage.setItem('isUserSignedIn', 'true')
         navigate('/')
     }
 

@@ -48,12 +48,8 @@ export const useFirebaseAuth = () => {
                         id: user.uid,
                     })
                 )
-                localStorage.setItem('isUserSignedIn', 'true')
             } else {
                 dispatch(removeUser())
-                localStorage.setItem('isUserSignedIn', '')
-                localStorage.setItem('gameName', '')
-                localStorage.setItem('pageNumber', '1')
             }
         })
         return unsubscribe()

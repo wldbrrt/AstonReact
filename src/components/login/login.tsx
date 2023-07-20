@@ -29,7 +29,6 @@ function LogIn() {
                 )
             })
             .catch(() => alert('Invalid User'))
-        localStorage.setItem('isUserSignedIn', 'true')
         navigate(`/`)
     }
 
