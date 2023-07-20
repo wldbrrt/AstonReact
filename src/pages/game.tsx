@@ -1,4 +1,5 @@
 import { GameCard } from '../components/gameCard/gameCard'
+import { useAuthorization } from '../store/hooks'
 import { useParams, Navigate } from 'react-router-dom'
 import React from 'react'
 import './game.css'
@@ -6,13 +7,9 @@ import './game.css'
 function Game() {
     const { id } = useParams()
     const gameId = Number(id)
-    const isUserSignedIn = localStorage.getItem('isUserSignedIn')
+    const { isAuth } = useAuthorization()
 
-    return isUserSignedIn ? (
-        <GameCard gameId={gameId} />
-    ) : (
-        <Navigate to='/SignUp' />
-    )
+    return isAuth ? <GameCard gameId={gameId} /> : <Navigate to='/SignUp' />
 }
 
 export { Game }

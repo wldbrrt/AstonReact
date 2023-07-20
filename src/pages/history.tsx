@@ -1,11 +1,12 @@
 import { HistoryList } from '../components/historyList/historyList'
+import { useAuthorization } from '../store/hooks'
 import { Navigate } from 'react-router-dom'
 import React from 'react'
 
 function History() {
-    const isUserSignedIn = localStorage.getItem('isUserSignedIn')
+    const { isAuth } = useAuthorization()
 
-    return isUserSignedIn ? <HistoryList /> : <Navigate to='/SignUp' />
+    return isAuth ? <HistoryList /> : <Navigate to='/SignUp' />
 }
 
 export { History }

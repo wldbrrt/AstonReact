@@ -1,12 +1,13 @@
 import { Search } from '../components/search/search'
 import { AllGamesList } from '../components/allGamesList/allGamesList'
 import { PageControlls } from '../components/allGamesList/pageControlls'
+import { useAuthorization } from '../store/hooks'
 import { Navigate } from 'react-router-dom'
 import React, { useEffect, useState } from 'react'
 import './home.css'
 
 function Home() {
-    const isUserSignedIn = localStorage.getItem('isUserSignedIn')
+    const { isAuth } = useAuthorization()
 
     const storageName = localStorage.getItem('gameName')
         ? String(localStorage.getItem('gameName'))
@@ -24,7 +25,7 @@ function Home() {
         localStorage.setItem('pageNumber', String(pageNumber))
     }, [gameName, pageNumber])
 
-    return isUserSignedIn ? (
+    return isAuth ? (
         <div className='home'>
             <Search
                 onClickHandler={setGameName}
