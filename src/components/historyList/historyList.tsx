@@ -1,4 +1,8 @@
-import { useGetUserHistoryQuery } from '../../store/slices/firestoreApi'
+import {
+    useGetUserHistoryQuery,
+    useLazyDeleteUserHistoryQuery,
+    useLazyGetUserHistoryQuery,
+} from '../../store/slices/firestoreApi'
 import { useAuthorization } from '../../store/hooks'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import React from 'react'
@@ -11,7 +15,9 @@ function HistoryList() {
         useGetUserHistoryQuery({
             email: email,
         })
+    const [triggerUpdateHistory] = useLazyGetUserHistoryQuery()
     const navigate = useNavigate()
+    const [triggerDeleteHistory] = useLazyDeleteUserHistoryQuery()
 
     let content
     if (isFetching || isLoading) {
@@ -47,7 +53,15 @@ function HistoryList() {
 
     return (
         <div className='histotyList'>
-            <button className='historyList__button'>Clear history</button>
+            <button
+                onClick={async () => {
+                    await triggerDeleteHistory({ email: email })
+                    await triggerUpdateHistory({ email: email })
+                }}
+                className='historyList__button'
+            >
+                Clear history
+            </button>
             <div className='historyList__container'>{content}</div>
         </div>
     )

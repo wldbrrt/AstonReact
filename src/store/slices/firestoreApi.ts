@@ -99,6 +99,27 @@ export const firestoreApi = createApi({
                 }
             },
         }),
+        deleteUserHistory: builder.query<IUserUpdatedData, IHistoryQueryParams>(
+            {
+                async queryFn({ email: email }) {
+                    try {
+                        const ref = await setDoc(
+                            doc(database, 'Users', `${email}`),
+                            {
+                                email: email,
+                                history: [],
+                            }
+                        )
+                            .then(() => true)
+                            .catch(() => false)
+
+                        return { data: { isSuccess: ref } }
+                    } catch (error: unknown) {
+                        return { error: error }
+                    }
+                },
+            }
+        ),
         updateUserHistory: builder.query<IUserUpdatedData, IupdateHistoryQuery>(
             {
                 async queryFn({ email: email, name: name, date: date }) {
@@ -206,4 +227,5 @@ export const {
     useLazyUpdateUserFavoritesQuery,
     useDeleteUserFavoritesQuery,
     useLazyDeleteUserFavoritesQuery,
+    useLazyDeleteUserHistoryQuery,
 } = firestoreApi
