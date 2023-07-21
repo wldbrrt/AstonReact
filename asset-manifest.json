@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/AstonReact/static/css/main.1aa142f7.css",
+    "main.js": "/AstonReact/static/js/main.7a0f90e3.js",
+    "static/js/787.deacaecf.chunk.js": "/AstonReact/static/js/787.deacaecf.chunk.js",
+    "static/media/logo.png": "/AstonReact/static/media/logo.a1d3e024ae7c13092867.png",
+    "index.html": "/AstonReact/index.html",
+    "main.1aa142f7.css.map": "/AstonReact/static/css/main.1aa142f7.css.map",
+    "main.7a0f90e3.js.map": "/AstonReact/static/js/main.7a0f90e3.js.map",
+    "787.deacaecf.chunk.js.map": "/AstonReact/static/js/787.deacaecf.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1aa142f7.css",
+    "static/js/main.7a0f90e3.js"
+  ]
+}
