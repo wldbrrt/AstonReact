@@ -21,6 +21,9 @@ function FavoritesList() {
         content = 'LOADING'
     } else if (isSuccess) {
         const dataArr = Object.values(data)
+        if (isSuccess && !dataArr.length) {
+            return <div className='favorites'>Nothing was found</div>
+        }
         content = dataArr.map(game => (
             <div
                 key={game.id}
