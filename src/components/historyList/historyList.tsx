@@ -4,6 +4,7 @@ import {
     useLazyGetUserHistoryQuery,
 } from '../../store/slices/firestoreApi'
 import { useAuthorization } from '../../store/hooks'
+import { Loader } from '../loader/loader'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import React from 'react'
 import './historyList.css'
@@ -21,7 +22,7 @@ function HistoryList() {
 
     let content
     if (isFetching || isLoading) {
-        content = 'is Loading'
+        content = <Loader />
     } else if (isSuccess && !data.history.length) {
         content = 'Nothing was found'
     } else if (isSuccess) {

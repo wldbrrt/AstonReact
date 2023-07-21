@@ -5,6 +5,7 @@ import {
     useLazyGetUserFavoritesQuery,
     useLazyUpdateUserFavoritesQuery,
 } from '../../store/slices/firestoreApi'
+import { Loader } from '../loader/loader'
 import React from 'react'
 import './gameCard.css'
 
@@ -23,7 +24,7 @@ function GameCard({ gameId }: IgameCardProps) {
     let content
 
     if (isLoading || isFetching) {
-        content = 'Is Loading...'
+        content = <Loader />
     } else if (isSuccess) {
         content = (
             <div className='game'>

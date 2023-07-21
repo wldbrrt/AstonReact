@@ -1,4 +1,5 @@
 import { useGetGamesQuery } from '../../store/slices/gamesAPI'
+import { Loader } from '../loader/loader'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import React, { useEffect } from 'react'
 import './allGamesList.css'
@@ -24,7 +25,7 @@ function AllGamesList({ size, isLastPageSetter }: GameListProps) {
 
     let content
     if (isLoading || isFetching) {
-        content = 'LOADING'
+        content = <Loader />
     } else if (isSuccess && !data?.count) {
         content = 'Nothing has found'
     } else if (isSuccess) {

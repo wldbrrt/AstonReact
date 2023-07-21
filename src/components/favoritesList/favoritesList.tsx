@@ -4,6 +4,7 @@ import {
     useLazyGetUserFavoritesQuery,
 } from '../../store/slices/firestoreApi'
 import { useAuthorization } from '../../store/hooks'
+import { Loader } from '../loader/loader'
 import { useNavigate } from 'react-router-dom'
 import React from 'react'
 import './favoritesList.css'
@@ -18,7 +19,7 @@ function FavoritesList() {
 
     let content
     if (isLoading || isFetching) {
-        content = 'LOADING'
+        content = <Loader />
     } else if (isSuccess) {
         const dataArr = Object.values(data)
         if (isSuccess && !dataArr.length) {
