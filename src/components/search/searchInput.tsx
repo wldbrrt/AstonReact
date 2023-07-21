@@ -5,12 +5,14 @@ interface SearchInputProps {
     onChangeHandler: (gameName: string) => void
     onFocusHandler: (isFocused: boolean) => void
     gameName: string
+    onKeyDownEvent: () => void
 }
 
 function SearchInput({
     onChangeHandler,
     onFocusHandler,
     gameName,
+    onKeyDownEvent,
 }: SearchInputProps) {
     return (
         <input
@@ -22,6 +24,11 @@ function SearchInput({
             onChange={e => onChangeHandler(e.target.value)}
             onFocus={() => onFocusHandler(true)}
             onBlur={() => onFocusHandler(false)}
+            onKeyDown={e => {
+                if (e.key === 'Enter') {
+                    onKeyDownEvent()
+                }
+            }}
         />
     )
 }

@@ -22,30 +22,33 @@ function Search({ onClickHandler, onClickPageReset }: SearchProps) {
     const [isFocused, setIsFocused] = useState(false)
     const debouncedValue = useDebounce(gameName, 800)
 
+    const searchEventHandler = async () => {
+        onClickHandler(gameName)
+        onClickPageReset(1)
+        setGameName('')
+        if (gameName) {
+            await triggerUpdateData({
+                email: email,
+                name: gameName,
+                date: getCurrentDate(),
+            })
+            await triggerGetData({
+                email: email,
+            })
+        }
+    }
+
     return (
         <div className='search'>
             <SearchInput
                 onChangeHandler={setGameName}
                 onFocusHandler={setIsFocused}
                 gameName={gameName}
+                onKeyDownEvent={searchEventHandler}
             />
             <button
                 className='search__button'
-                onClick={async () => {
-                    onClickHandler(gameName)
-                    onClickPageReset(1)
-                    setGameName('')
-                    if (gameName) {
-                        await triggerUpdateData({
-                            email: email,
-                            name: gameName,
-                            date: getCurrentDate(),
-                        })
-                        await triggerGetData({
-                            email: email,
-                        })
-                    }
-                }}
+                onClick={searchEventHandler}
             >
                 Search
             </button>
