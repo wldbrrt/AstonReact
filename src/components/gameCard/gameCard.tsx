@@ -8,6 +8,7 @@ import {
 import { Loader } from '../loader/loader'
 import React from 'react'
 import './gameCard.css'
+import PropTypes from 'prop-types'
 
 interface IgameCardProps {
     gameId: number
@@ -63,6 +64,10 @@ function GameCard({ gameId }: IgameCardProps) {
     }
 
     return <div>{content}</div>
+}
+
+GameCard.propTypes = {
+    gameId: PropTypes.number,
 }
 
 export { GameCard }
