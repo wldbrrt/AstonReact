@@ -3,7 +3,6 @@ import { GameList } from './gameList'
 import { getCurrentDate } from '../../features/getCurrentDate'
 import { useAuthorization, useDebounce } from '../../store/hooks'
 import {
-    useGetUserHistoryQuery,
     useLazyGetUserHistoryQuery,
     useLazyUpdateUserHistoryQuery,
 } from '../../store/slices/firestoreApi'

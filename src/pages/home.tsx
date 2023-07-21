@@ -29,9 +29,7 @@ function Home() {
             />
             <h1>Search: {gameName}</h1>
             <AllGamesList
-                pages={pageNumber}
                 size={21}
-                name={gameName}
                 isLastPageSetter={setIsLastPage}
             />
             <PageControlls

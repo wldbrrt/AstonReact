@@ -1,6 +1,5 @@
 import { LogIn } from '../components/login/login'
-import { useAuthorization } from '../store/hooks'
-import { Link, Navigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import React from 'react'
 
 function SignIn() {

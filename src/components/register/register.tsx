@@ -23,7 +23,7 @@ function Register() {
                 )
                 trigger({ email: email })
             })
-            .catch(console.error)
+            .catch(err => alert(err))
         navigate('/')
     }
 

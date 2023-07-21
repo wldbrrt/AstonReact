@@ -13,7 +13,7 @@ function FavoritesList() {
     const { email } = useAuthorization()
     const [triggerDelete] = useLazyDeleteUserFavoritesQuery()
     const [triggerGet] = useLazyGetUserFavoritesQuery()
-    const { data, isSuccess, isLoading, isFetching, isError, error } =
+    const { data, isSuccess, isLoading, isFetching, isError } =
         useGetUserFavoritesQuery({ email: email })
 
     let content

@@ -8,7 +8,6 @@ import {
     deleteField,
 } from 'firebase/firestore'
 import { createApi, fakeBaseQuery } from '@reduxjs/toolkit/query/react'
-import { FormMethod } from 'react-router-dom'
 
 interface IHistory {
     searchReq: string
@@ -75,10 +74,8 @@ export const firestoreApi = createApi({
                         }
                     })
                     return { data: ref }
-                } catch (error: any) {
-                    // У меня тут any, но я не придумал чем это заменить и не уверен, что стоит.
-                    // Прошу оставить коммент по этому поводу:)
-                    return { error: error.message }
+                } catch (error: unknown) {
+                    return { error: error }
                 }
             },
         }),
@@ -97,8 +94,8 @@ export const firestoreApi = createApi({
                         .catch(() => false)
 
                     return { data: { isSuccess: ref } }
-                } catch (error: any) {
-                    return { error: error.message }
+                } catch (error: unknown) {
+                    return { error: error }
                 }
             },
         }),
@@ -119,8 +116,8 @@ export const firestoreApi = createApi({
                             .catch(() => false)
 
                         return { data: { isSuccess: ref } }
-                    } catch (error: any) {
-                        return { error: error.message }
+                    } catch (error: unknown) {
+                        return { error: error }
                     }
                 },
             }
@@ -138,8 +135,8 @@ export const firestoreApi = createApi({
                         }
                     })
                     return { data: ref }
-                } catch (error: any) {
-                    return { error: error.message }
+                } catch (error: unknown) {
+                    return { error: error }
                 }
             },
         }),
@@ -171,8 +168,8 @@ export const firestoreApi = createApi({
                         .catch(() => false)
 
                     return { data: { isSuccess: ref } }
-                } catch (error: any) {
-                    return { error: error.message }
+                } catch (error: unknown) {
+                    return { error: error }
                 }
             },
         }),
@@ -189,8 +186,8 @@ export const firestoreApi = createApi({
                         .catch(() => false)
 
                     return { data: { isSuccess: ref } }
-                } catch (error: any) {
-                    return { error: error.message }
+                } catch (error: unknown) {
+                    return { error: error }
                 }
             },
         }),

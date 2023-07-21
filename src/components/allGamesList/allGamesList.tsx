@@ -1,17 +1,15 @@
 import { useGetGamesQuery } from '../../store/slices/gamesAPI'
-import { useNavigate, useParams, useSearchParams } from 'react-router-dom'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import React, { useEffect } from 'react'
 import './allGamesList.css'
 
 interface GameListProps {
-    pages: number
     size: number
-    name: string
     isLastPageSetter: (value: boolean) => void
 }
 
-function AllGamesList({ pages, size, name, isLastPageSetter }: GameListProps) {
-    const [value, setValue] = useSearchParams()
+function AllGamesList({ size, isLastPageSetter }: GameListProps) {
+    const [value] = useSearchParams()
     const navigate = useNavigate()
     const { data, isLoading, isFetching, isSuccess, isError, error } =
         useGetGamesQuery({

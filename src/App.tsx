@@ -7,7 +7,7 @@ import { History } from './pages/history'
 import { Favorites } from './pages/favorites'
 import { useFirebaseAuth } from './store/hooks'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import React, { useEffect } from 'react'
+import React from 'react'
 import './App.css'
 
 function App() {
