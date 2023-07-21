@@ -8,6 +8,7 @@ import {
 import { useAuthorization } from '../../store/hooks'
 import { reduxForm, Field, InjectedFormProps } from 'redux-form'
 import React, { useState } from 'react'
+import './form.css'
 
 interface FormProps {
     title: string
@@ -24,7 +25,7 @@ function RegistrationForm({ title, handleClick }: FormProps) {
     const [isPassInvalid, setIsPassValid] = useState()
 
     return (
-        <div>
+        <div className='form__contaiter'>
             <Field
                 name='email'
                 component={Input}
@@ -50,6 +51,7 @@ function RegistrationForm({ title, handleClick }: FormProps) {
                 setValid={setIsPassValid}
             />
             <button
+                className='form__button'
                 disabled={isAuth || isEmailInvalid || isPassInvalid}
                 onClick={() => handleClick(email, password)}
             >

@@ -26,13 +26,14 @@ function Input({
     }, [invalid])
 
     return (
-        <div>
-            <label>{placeholder}</label>
-            <div>
+        <div className='form__input'>
+            <label className='form__name'>{placeholder}</label>
+            <div className='form__item'>
                 <input
                     {...input}
                     placeholder={placeholder}
                     type={type}
+                    className='form__field'
                 />
                 {touched &&
                     ((error && <span>{error}</span>) ||

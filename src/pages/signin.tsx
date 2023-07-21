@@ -4,10 +4,10 @@ import React from 'react'
 
 function SignIn() {
     return (
-        <div>
-            <h2>Log In</h2>
+        <div className='form'>
+            <h2 className='form__head'>Log In</h2>
             <LogIn />
-            <p>
+            <p className='form__tip'>
                 Dont have account yet? <Link to='/SignUp'>Register</Link>
             </p>
         </div>
