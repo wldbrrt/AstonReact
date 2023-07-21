@@ -43,4 +43,4 @@ function Home() {
     )
 }
 
-export { Home }
+export { Home as default }

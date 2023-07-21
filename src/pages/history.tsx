@@ -9,4 +9,4 @@ function History() {
     return isAuth ? <HistoryList /> : <Navigate to='/SignUp' />
 }
 
-export { History }
+export { History as default }

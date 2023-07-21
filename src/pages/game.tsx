@@ -12,4 +12,4 @@ function Game() {
     return isAuth ? <GameCard gameId={gameId} /> : <Navigate to='/SignUp' />
 }
 
-export { Game }
+export { Game as default }
