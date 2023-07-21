@@ -20,6 +20,8 @@ function RegistrationForm({ title, handleClick }: FormProps) {
     const { isAuth } = useAuthorization()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [isEmailInvalid, setIsEmailValid] = useState()
+    const [isPassInvalid, setIsPassValid] = useState()
 
     return (
         <div>
@@ -33,6 +35,7 @@ function RegistrationForm({ title, handleClick }: FormProps) {
                 }
                 placeholder='Email'
                 validate={[validateEmail, validateRequired]}
+                setValid={setIsEmailValid}
             />
             <Field
                 name='password'
@@ -44,9 +47,10 @@ function RegistrationForm({ title, handleClick }: FormProps) {
                 }
                 placeholder='Password'
                 validate={[validateRequired, minPasswordLength]}
+                setValid={setIsPassValid}
             />
             <button
-                disabled={isAuth}
+                disabled={isAuth || isEmailInvalid || isPassInvalid}
                 onClick={() => handleClick(email, password)}
             >
                 {title}
