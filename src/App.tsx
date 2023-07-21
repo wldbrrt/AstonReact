@@ -19,6 +19,10 @@ function App() {
                 <Header />
                 <Routes>
                     <Route
+                        path='*'
+                        element={<div>WRONG PAGE</div>}
+                    />
+                    <Route
                         path='/'
                         element={<Home />}
                     />
