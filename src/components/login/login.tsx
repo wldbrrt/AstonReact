@@ -1,5 +1,5 @@
 import { Form } from '../form/form'
-import { useAppDispatch } from '../../store/hooks'
+import { useAppDispatch, useAuthorization } from '../../store/hooks'
 import { setUser } from '../../store/slices/user'
 import {
     browserSessionPersistence,
@@ -27,9 +27,9 @@ function LogIn() {
                         id: user.uid,
                     })
                 )
+                navigate(`/`)
             })
             .catch(() => alert('Invalid User'))
-        navigate(`/`)
     }
 
     return (
