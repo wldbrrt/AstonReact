@@ -103,10 +103,9 @@ export const firestoreApi = createApi({
             {
                 async queryFn({ email: email }) {
                     try {
-                        const ref = await setDoc(
+                        const ref = await updateDoc(
                             doc(database, 'Users', `${email}`),
                             {
-                                email: email,
                                 history: [],
                             }
                         )
