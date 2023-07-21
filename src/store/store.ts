@@ -1,6 +1,7 @@
 import { firestoreApi } from './slices/firestoreApi'
 import userReducer from './slices/user'
 import { gamesApi } from './slices/gamesAPI'
+import { userMiddleware } from './middleware/userMiddleware'
 import { reducer as formReducer } from 'redux-form'
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit'
 
@@ -14,7 +15,8 @@ export const store = configureStore({
     middleware: getDefaultMiddleware => {
         return getDefaultMiddleware().concat(
             gamesApi.middleware,
-            firestoreApi.middleware
+            firestoreApi.middleware,
+            userMiddleware
         )
     },
 })
