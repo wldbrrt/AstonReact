@@ -6,6 +6,7 @@ import { Game } from './pages/game'
 import { History } from './pages/history'
 import { Favorites } from './pages/favorites'
 import { useFirebaseAuth } from './store/hooks'
+import { ErrorBoundary } from 'react-error-boundary'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import React from 'react'
 import './App.css'
@@ -24,8 +25,15 @@ function App() {
                     />
                     <Route
                         path='/'
-                        element={<Home />}
+                        element={
+                            <ErrorBoundary
+                                fallback={<div>Something went wrong</div>}
+                            >
+                                <Home />
+                            </ErrorBoundary>
+                        }
                     />
+
                     <Route
                         path='/SignUp'
                         element={<SignUp />}
@@ -36,15 +44,33 @@ function App() {
                     />
                     <Route
                         path='/Favorites'
-                        element={<Favorites />}
+                        element={
+                            <ErrorBoundary
+                                fallback={<div>Something went wrong</div>}
+                            >
+                                <Favorites />
+                            </ErrorBoundary>
+                        }
                     />
                     <Route
                         path='/History'
-                        element={<History />}
+                        element={
+                            <ErrorBoundary
+                                fallback={<div>Something went wrong</div>}
+                            >
+                                <History />
+                            </ErrorBoundary>
+                        }
                     />
                     <Route
                         path='/Game/:id'
-                        element={<Game />}
+                        element={
+                            <ErrorBoundary
+                                fallback={<div>Something went wrong</div>}
+                            >
+                                <Game />
+                            </ErrorBoundary>
+                        }
                     />
                 </Routes>
             </BrowserRouter>
