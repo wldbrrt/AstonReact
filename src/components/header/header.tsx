@@ -16,7 +16,7 @@ function Header() {
                     if (isAuth) {
                         navigate({
                             pathname: '/',
-                            search: '?search=&page=',
+                            search: '?search=&page=1',
                         })
                     } else {
                         navigate('/SignIn')

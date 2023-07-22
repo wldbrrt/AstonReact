@@ -26,7 +26,9 @@ function GameList({ pages, size, name, isInputFocused }: GameListProps) {
             <div
                 key={game.id}
                 className='search__item'
-                onClick={() => navigate(`/Game/${game.id}`)}
+                onClick={() => {
+                    navigate(`/Game/${game.id}`)
+                }}
             >
                 <img
                     className='search__img'
