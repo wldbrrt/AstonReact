@@ -12,7 +12,7 @@ interface GameListProps {
 function AllGamesList({ size, isLastPageSetter }: GameListProps) {
     const [value] = useSearchParams()
     const navigate = useNavigate()
-    const { data, isLoading, isFetching, isSuccess, isError, error } =
+    const { data, isLoading, isFetching, isSuccess, isError } =
         useGetGamesQuery({
             pageNumber: Number(value.get('page')) || 1,
             pageSize: size,

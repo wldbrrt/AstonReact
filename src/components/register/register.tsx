@@ -4,7 +4,7 @@ import { setUser } from '../../store/slices/user'
 import { useLazySetUserHistoryQuery } from '../../store/slices/firestoreApi'
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
 import { useNavigate } from 'react-router-dom'
-import React, { useState } from 'react'
+import React from 'react'
 
 function Register() {
     const [trigger] = useLazySetUserHistoryQuery()

@@ -4,7 +4,7 @@ import { SignIn } from './pages/signin'
 import { useFirebaseAuth } from './store/hooks'
 import { Loader } from './components/loader/loader'
 import { ErrorBoundary } from 'react-error-boundary'
-import { BrowserRouter, Routes, Route, HashRouter } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import React, { createContext, lazy, Suspense, useMemo, useState } from 'react'
 import './App.css'
 

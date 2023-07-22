@@ -1,5 +1,5 @@
 import { Form } from '../form/form'
-import { useAppDispatch, useAuthorization } from '../../store/hooks'
+import { useAppDispatch } from '../../store/hooks'
 import { setUser } from '../../store/slices/user'
 import {
     browserSessionPersistence,
