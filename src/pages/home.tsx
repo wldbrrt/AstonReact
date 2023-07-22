@@ -13,7 +13,7 @@ function Home() {
     const [gameName, setGameName] = useState(value.get('search') || '')
     const [pageNumber, setPagenumber] = useState(Number(value.get('page')) || 1)
     const [isLastPage, setIsLastPage] = useState(true)
-    const theme = useContext(Theme)
+    const { lightTheme } = useContext(Theme)
     useEffect(() => {
         setValue(params => {
             params.set('search', gameName)
@@ -23,7 +23,7 @@ function Home() {
     }, [gameName, pageNumber])
 
     return isAuth ? (
-        <div className={theme === 'light' ? 'home' : 'home _black'}>
+        <div className={lightTheme ? 'home' : 'home _black'}>
             <Search
                 onClickHandler={setGameName}
                 onClickPageReset={setPagenumber}

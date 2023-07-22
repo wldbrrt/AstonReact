@@ -6,11 +6,7 @@ import { useAuthorization } from '../../store/hooks'
 import { useNavigate } from 'react-router-dom'
 import React from 'react'
 
-interface IProps {
-    setTheme: (value: string) => void
-}
-
-function Header({ setTheme }: IProps) {
+function Header() {
     const navigate = useNavigate()
     const { isAuth } = useAuthorization()
     return (
@@ -23,7 +19,7 @@ function Header({ setTheme }: IProps) {
                 alt='logo'
                 className='header__logo'
             />
-            <SwitchButton setTheme={setTheme} />
+            <SwitchButton />
             <Navigation />
         </header>
     )

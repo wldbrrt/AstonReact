@@ -5,13 +5,7 @@ import { useFirebaseAuth } from './store/hooks'
 import { Loader } from './components/loader/loader'
 import { ErrorBoundary } from 'react-error-boundary'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import React, {
-    createContext,
-    lazy,
-    Suspense,
-    useContext,
-    useState,
-} from 'react'
+import React, { createContext, lazy, Suspense, useState } from 'react'
 import './App.css'
 
 const Home = lazy(() => import('./pages/home'))
@@ -19,19 +13,28 @@ const Favorites = lazy(() => import('./pages/favorites'))
 const History = lazy(() => import('./pages/history'))
 const Game = lazy(() => import('./pages/game'))
 
-export const Theme = createContext('light')
+export type ContextType = {
+    lightTheme: boolean
+    setLightTheme: (c: boolean) => void
+}
+
+export const Theme = createContext<ContextType>({
+    lightTheme: true,
+    setLightTheme: () => {
+        undefined
+    },
+})
 
 function App() {
     useFirebaseAuth()
-    const currentTheme = useContext(Theme)
-    const [theme, setTheme] = useState(currentTheme)
+    const [lightTheme, setLightTheme] = useState(true)
 
     return (
-        <div className={theme === 'light' ? 'App' : 'App _black'}>
-            <BrowserRouter>
-                <Theme.Provider value={theme}>
+        <Theme.Provider value={{ lightTheme, setLightTheme }}>
+            <div className={lightTheme ? 'App' : 'App _black'}>
+                <BrowserRouter>
                     <Suspense fallback={<Loader />}>
-                        <Header setTheme={setTheme} />
+                        <Header />
                         <Routes>
                             <Route
                                 path='*'
@@ -96,9 +99,9 @@ function App() {
                             />
                         </Routes>
                     </Suspense>
-                </Theme.Provider>
-            </BrowserRouter>
-        </div>
+                </BrowserRouter>
+            </div>
+        </Theme.Provider>
     )
 }
 

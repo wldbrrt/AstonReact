@@ -1,29 +1,35 @@
 import { Theme } from '../../App'
-import React, { createContext, useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import './switchButton.css'
 
-interface IProps {
-    setTheme: (value: string) => void
-}
-
-function SwitchButton({ setTheme }: IProps) {
-    const theme = useContext(Theme)
+function SwitchButton() {
+    const { lightTheme, setLightTheme } = useContext(Theme)
     return (
         <div className='switch__container'>
             <label className='switch'>
                 <input
-                    type='checkbox'
+                    checked={!lightTheme}
+                    name='theme'
+                    type='radio'
                     onChange={() => {
-                        if (theme === 'light') {
-                            setTheme('dark')
-                        } else {
-                            setTheme('light')
-                        }
+                        setLightTheme(false)
                     }}
                 />
                 <span className='slider round'></span>
+                <span>Dark</span>
             </label>
-            <span>Dark theme</span>
+            <label className='switch'>
+                <input
+                    checked={lightTheme}
+                    name='theme'
+                    type='radio'
+                    onChange={() => {
+                        setLightTheme(true)
+                    }}
+                />
+                <span className='slider round'></span>
+                <span>Light</span>
+            </label>
         </div>
     )
 }
