@@ -51,11 +51,7 @@ function App() {
                                             <div>Something went wrong</div>
                                         }
                                     >
-                                        {isAuth ? (
-                                            <Home />
-                                        ) : (
-                                            <Navigate to={'/SignUp'} />
-                                        )}
+                                        <Home />
                                     </ErrorBoundary>
                                 }
                             />
@@ -108,11 +104,7 @@ function App() {
                                             <div>Something went wrong</div>
                                         }
                                     >
-                                        {isAuth ? (
-                                            <Game />
-                                        ) : (
-                                            <Navigate to={'/SignUp'} />
-                                        )}
+                                        <Game />
                                     </ErrorBoundary>
                                 }
                             />

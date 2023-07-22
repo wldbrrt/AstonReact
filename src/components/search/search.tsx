@@ -15,6 +15,7 @@ interface SearchProps {
 }
 
 function Search({ onClickHandler, onClickPageReset }: SearchProps) {
+    const { isAuth } = useAuthorization()
     const { email } = useAuthorization()
     const [triggerUpdateData] = useLazyUpdateUserHistoryQuery()
     const [triggerGetData] = useLazyGetUserHistoryQuery()
@@ -26,7 +27,7 @@ function Search({ onClickHandler, onClickPageReset }: SearchProps) {
         onClickHandler(gameName)
         onClickPageReset(1)
         setGameName('')
-        if (gameName) {
+        if (gameName && isAuth) {
             await triggerUpdateData({
                 email: email,
                 name: gameName,

@@ -23,7 +23,7 @@ function SearchInput({
             value={gameName}
             onChange={e => onChangeHandler(e.target.value)}
             onFocus={() => onFocusHandler(true)}
-            onBlur={() => setTimeout(() => onFocusHandler(true))}
+            onBlur={() => setTimeout(() => onFocusHandler(false), 100)}
             onKeyDown={e => {
                 if (e.key === 'Enter') {
                     onKeyDownEvent()

@@ -12,15 +12,11 @@ function Header() {
     return (
         <header className='header'>
             <img
-                onClick={async () => {
-                    if (isAuth) {
-                        navigate({
-                            pathname: '/',
-                            search: '?search=&page=1',
-                        })
-                    } else {
-                        navigate('/SignIn')
-                    }
+                onClick={() => {
+                    navigate({
+                        pathname: '/',
+                        search: '?search=&page=1',
+                    })
                 }}
                 src={logo}
                 alt='logo'

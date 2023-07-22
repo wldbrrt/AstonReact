@@ -15,6 +15,7 @@ interface IgameCardProps {
 }
 
 function GameCard({ gameId }: IgameCardProps) {
+    const { isAuth } = useAuthorization()
     const { data, isLoading, isFetching, isSuccess, isError, error } =
         useGetSingleGameQuery({ gameId: gameId })
 
@@ -40,6 +41,7 @@ function GameCard({ gameId }: IgameCardProps) {
                     alt={data.name}
                 />
                 <button
+                    disabled={!isAuth}
                     className='game__add'
                     onClick={() => {
                         trigger({
