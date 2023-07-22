@@ -9,4 +9,4 @@ function Favorites() {
     return isAuth ? <FavoritesList /> : <Navigate to='/SignUp' />
 }
 
-export { Favorites }
+export { Favorites as default }

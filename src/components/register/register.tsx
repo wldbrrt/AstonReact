@@ -4,7 +4,7 @@ import { setUser } from '../../store/slices/user'
 import { useLazySetUserHistoryQuery } from '../../store/slices/firestoreApi'
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
 import { useNavigate } from 'react-router-dom'
-import React from 'react'
+import React, { useState } from 'react'
 
 function Register() {
     const [trigger] = useLazySetUserHistoryQuery()
@@ -22,9 +22,11 @@ function Register() {
                     })
                 )
                 trigger({ email: email })
+                navigate('/')
             })
-            .catch(err => alert(err))
-        navigate('/')
+            .catch(err => {
+                alert(err)
+            })
     }
 
     return (

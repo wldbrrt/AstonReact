@@ -5,8 +5,10 @@ import {
     useLazyGetUserFavoritesQuery,
     useLazyUpdateUserFavoritesQuery,
 } from '../../store/slices/firestoreApi'
+import { Loader } from '../loader/loader'
 import React from 'react'
 import './gameCard.css'
+import PropTypes from 'prop-types'
 
 interface IgameCardProps {
     gameId: number
@@ -23,7 +25,7 @@ function GameCard({ gameId }: IgameCardProps) {
     let content
 
     if (isLoading || isFetching) {
-        content = 'Is Loading...'
+        content = <Loader />
     } else if (isSuccess) {
         content = (
             <div className='game'>
@@ -62,6 +64,10 @@ function GameCard({ gameId }: IgameCardProps) {
     }
 
     return <div>{content}</div>
+}
+
+GameCard.propTypes = {
+    gameId: PropTypes.number,
 }
 
 export { GameCard }

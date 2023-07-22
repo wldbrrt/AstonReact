@@ -2,6 +2,7 @@ import { useGetGamesQuery } from '../../store/slices/gamesAPI'
 import { useNavigate } from 'react-router-dom'
 import React from 'react'
 import './gameList.css'
+import PropTypes from 'prop-types'
 
 interface GameListProps {
     pages: number
@@ -51,6 +52,13 @@ function GameList({ pages, size, name, isInputFocused }: GameListProps) {
             {content}
         </div>
     )
+}
+
+GameList.propTypes = {
+    pages: PropTypes.number,
+    size: PropTypes.number,
+    name: PropTypes.string,
+    isInputFocused: PropTypes.bool,
 }
 
 export { GameList }

@@ -1,5 +1,6 @@
 import './header.css'
 import { Navigation } from './navigation'
+import { SwitchButton } from './switchButton'
 import logo from '../../assets/logo.png'
 import { useAuthorization } from '../../store/hooks'
 import { useNavigate } from 'react-router-dom'
@@ -18,6 +19,7 @@ function Header() {
                 alt='logo'
                 className='header__logo'
             />
+            <SwitchButton />
             <Navigation />
         </header>
     )

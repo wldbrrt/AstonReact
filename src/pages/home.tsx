@@ -2,8 +2,9 @@ import { Search } from '../components/search/search'
 import { AllGamesList } from '../components/allGamesList/allGamesList'
 import { PageControlls } from '../components/allGamesList/pageControlls'
 import { useAuthorization } from '../store/hooks'
+import { Theme } from '../App'
 import { Navigate, useSearchParams } from 'react-router-dom'
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import './home.css'
 
 function Home() {
@@ -12,7 +13,7 @@ function Home() {
     const [gameName, setGameName] = useState(value.get('search') || '')
     const [pageNumber, setPagenumber] = useState(Number(value.get('page')) || 1)
     const [isLastPage, setIsLastPage] = useState(true)
-
+    const { lightTheme } = useContext(Theme)
     useEffect(() => {
         setValue(params => {
             params.set('search', gameName)
@@ -22,7 +23,7 @@ function Home() {
     }, [gameName, pageNumber])
 
     return isAuth ? (
-        <div className='home'>
+        <div className={lightTheme ? 'home' : 'home _black'}>
             <Search
                 onClickHandler={setGameName}
                 onClickPageReset={setPagenumber}
@@ -43,4 +44,4 @@ function Home() {
     )
 }
 
-export { Home }
+export { Home as default }
