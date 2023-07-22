@@ -49,3 +49,7 @@
 .form__tip {
     font-size: 20px;
 }
+
+.form__message {
+    position: absolute;
+}

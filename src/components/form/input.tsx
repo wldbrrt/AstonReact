@@ -36,8 +36,12 @@ function Input({
                     className='form__field'
                 />
                 {touched &&
-                    ((error && <span>{error}</span>) ||
-                        (warning && <span>{warning}</span>))}
+                    ((error && (
+                        <span className='form__message'>{error}</span>
+                    )) ||
+                        (warning && (
+                            <span className='form__message'>{warning}</span>
+                        )))}
             </div>
         </div>
     )

@@ -10,8 +10,8 @@ import './home.css'
 function Home() {
     const { isAuth } = useAuthorization()
     const [value, setValue] = useSearchParams()
-    const [gameName, setGameName] = useState(value.get('search') || '')
-    const [pageNumber, setPagenumber] = useState(Number(value.get('page')) || 1)
+    const [gameName, setGameName] = useState('')
+    const [pageNumber, setPagenumber] = useState(1)
     const [isLastPage, setIsLastPage] = useState(true)
     const { lightTheme } = useContext(Theme)
     useEffect(() => {
@@ -21,6 +21,11 @@ function Home() {
             return params
         })
     }, [gameName, pageNumber])
+
+    useEffect(() => {
+        setGameName(value.get('search') || '')
+        setPagenumber(Number(value.get('page')) || 1)
+    }, [value])
 
     return isAuth ? (
         <div className={lightTheme ? 'home' : 'home _black'}>

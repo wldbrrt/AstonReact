@@ -50,7 +50,7 @@ function AllGamesList({ size, isLastPageSetter }: GameListProps) {
             </div>
         ))
     } else if (isError) {
-        content = <div>{error.toString()}</div>
+        content = <div>{'SOMETHING WENT WRONG'}</div>
     }
 
     return <div className='allGamesList'>{content}</div>
