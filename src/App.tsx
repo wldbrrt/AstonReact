@@ -1,10 +1,10 @@
 import { Header } from './components/header/header'
 import { SignUp } from './pages/signup'
 import { SignIn } from './pages/signin'
-import { useFirebaseAuth } from './store/hooks'
+import { useAuthorization, useFirebaseAuth } from './store/hooks'
 import { Loader } from './components/loader/loader'
 import { ErrorBoundary } from 'react-error-boundary'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import React, { createContext, lazy, Suspense, useMemo, useState } from 'react'
 import './App.css'
 
@@ -20,12 +20,11 @@ export type ContextType = {
 
 export const Theme = createContext<ContextType>({
     lightTheme: true,
-    setLightTheme: () => {
-        undefined
-    },
+    setLightTheme: () => undefined,
 })
 
 function App() {
+    const { isAuth } = useAuthorization()
     useFirebaseAuth()
     const [lightTheme, setLightTheme] = useState(true)
     const memoTheme = useMemo(
@@ -52,7 +51,11 @@ function App() {
                                             <div>Something went wrong</div>
                                         }
                                     >
-                                        <Home />
+                                        {isAuth ? (
+                                            <Home />
+                                        ) : (
+                                            <Navigate to={'/SignUp'} />
+                                        )}
                                     </ErrorBoundary>
                                 }
                             />
@@ -73,7 +76,11 @@ function App() {
                                             <div>Something went wrong</div>
                                         }
                                     >
-                                        <Favorites />
+                                        {isAuth ? (
+                                            <Favorites />
+                                        ) : (
+                                            <Navigate to={'/SignUp'} />
+                                        )}
                                     </ErrorBoundary>
                                 }
                             />
@@ -85,7 +92,11 @@ function App() {
                                             <div>Something went wrong</div>
                                         }
                                     >
-                                        <History />
+                                        {isAuth ? (
+                                            <History />
+                                        ) : (
+                                            <Navigate to={'/SignUp'} />
+                                        )}
                                     </ErrorBoundary>
                                 }
                             />
@@ -97,7 +108,11 @@ function App() {
                                             <div>Something went wrong</div>
                                         }
                                     >
-                                        <Game />
+                                        {isAuth ? (
+                                            <Game />
+                                        ) : (
+                                            <Navigate to={'/SignUp'} />
+                                        )}
                                     </ErrorBoundary>
                                 }
                             />

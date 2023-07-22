@@ -1,5 +1,14 @@
 import { database } from '../../firebase'
 import {
+    IHistoryQueryParams,
+    IupdateHistoryQuery,
+    IUserData,
+    IUserDelParams,
+    IUserFavorites,
+    IUserFavoritesProps,
+    IUserUpdatedData,
+} from '../../types/firestoreApiTypes'
+import {
     arrayUnion,
     doc,
     updateDoc,
@@ -8,54 +17,6 @@ import {
     deleteField,
 } from 'firebase/firestore'
 import { createApi, fakeBaseQuery } from '@reduxjs/toolkit/query/react'
-
-interface IHistory {
-    searchReq: string
-    date: string
-}
-
-interface IUserData {
-    email: string | null
-    history: IHistory[]
-}
-
-interface IUserNestedObj {
-    name: string
-    background_image: string
-    date: string
-    id: number
-}
-
-interface IUserFavorites {
-    [id: string]: IUserNestedObj
-}
-
-interface IUserFavoritesProps {
-    email: string | null
-    id: string
-    name: string
-    date: string
-    background_image: string
-}
-
-interface IUserDelParams {
-    email: string | null
-    id: string
-}
-
-interface IHistoryQueryParams {
-    email: string | null
-}
-
-interface IupdateHistoryQuery {
-    email: string | null
-    name: string
-    date: string
-}
-
-interface IUserUpdatedData {
-    isSuccess: boolean
-}
 
 export const firestoreApi = createApi({
     baseQuery: fakeBaseQuery(),

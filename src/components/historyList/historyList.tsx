@@ -5,12 +5,11 @@ import {
 } from '../../store/slices/firestoreApi'
 import { useAuthorization } from '../../store/hooks'
 import { Loader } from '../loader/loader'
-import { useNavigate, useSearchParams } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import React from 'react'
 import './historyList.css'
 
 function HistoryList() {
-    const [value, setValue] = useSearchParams()
     const { email } = useAuthorization()
     const { data, isSuccess, isLoading, isFetching, error, isError } =
         useGetUserHistoryQuery({
@@ -31,17 +30,10 @@ function HistoryList() {
                 key={index}
                 className='histotyList__item'
                 onClick={() => {
-                    if (e.searchReq) {
-                        setValue(params => {
-                            params.set('search', `${e.searchReq}`)
-                            params.set('page', '1')
-                            return params
-                        })
-                        navigate({
-                            pathname: '/',
-                            search: `?${value}`,
-                        })
-                    }
+                    navigate({
+                        pathname: '/',
+                        search: `?search=${e.searchReq}&page=1`,
+                    })
                 }}
             >
                 <div className='histotyList__name'>{e.searchReq}</div>

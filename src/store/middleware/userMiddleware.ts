@@ -9,7 +9,6 @@ export const userMiddleware: Middleware =
 
         if (action.type === setUser.type) {
             localStorage.setItem('UserData', JSON.stringify(action.payload))
-            return next(action)
         }
 
         return next(action)
