@@ -5,7 +5,7 @@ import { useAuthorization, useDebounce } from '../../store/hooks'
 import {
     useLazyGetUserHistoryQuery,
     useLazyUpdateUserHistoryQuery,
-} from '../../store/slices/firestoreApi'
+} from '../../api/firestoreApi'
 import React, { useState } from 'react'
 import './search.css'
 

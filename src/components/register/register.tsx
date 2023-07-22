@@ -1,7 +1,7 @@
 import { Form } from '../form/form'
 import { useAppDispatch } from '../../store/hooks'
 import { setUser } from '../../store/slices/user'
-import { useLazySetUserHistoryQuery } from '../../store/slices/firestoreApi'
+import { useLazySetUserHistoryQuery } from '../../api/firestoreApi'
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
 import { useNavigate } from 'react-router-dom'
 import React from 'react'

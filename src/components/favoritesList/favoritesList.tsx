@@ -2,7 +2,7 @@ import {
     useGetUserFavoritesQuery,
     useLazyDeleteUserFavoritesQuery,
     useLazyGetUserFavoritesQuery,
-} from '../../store/slices/firestoreApi'
+} from '../../api/firestoreApi'
 import { useAuthorization } from '../../store/hooks'
 import { Loader } from '../loader/loader'
 import { useNavigate } from 'react-router-dom'

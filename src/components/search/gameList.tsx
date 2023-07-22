@@ -1,4 +1,4 @@
-import { useGetGamesQuery } from '../../store/slices/gamesAPI'
+import { useGetGamesQuery } from '../../api/gamesAPI'
 import { useNavigate } from 'react-router-dom'
 import React from 'react'
 import './gameList.css'

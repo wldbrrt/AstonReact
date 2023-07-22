@@ -1,4 +1,4 @@
-import { useGetGamesQuery } from '../../store/slices/gamesAPI'
+import { useGetGamesQuery } from '../../api/gamesAPI'
 import { Loader } from '../loader/loader'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import React, { useEffect } from 'react'

@@ -1,4 +1,4 @@
-import { database } from '../../firebase'
+import { database } from '../firebase'
 import {
     IHistoryQueryParams,
     IupdateHistoryQuery,
@@ -7,7 +7,7 @@ import {
     IUserFavorites,
     IUserFavoritesProps,
     IUserUpdatedData,
-} from '../../types/firestoreApiTypes'
+} from '../types/firestoreApiTypes'
 import {
     arrayUnion,
     doc,

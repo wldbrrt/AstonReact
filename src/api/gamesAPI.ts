@@ -3,7 +3,7 @@ import {
     GetGamesQuery,
     GetSingleGameQuery,
     Igame,
-} from '../../types/gamesApiTypes'
+} from '../types/gamesApiTypes'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 const ApiKey = '2fc817b12e6941de82271c1328e08d20'

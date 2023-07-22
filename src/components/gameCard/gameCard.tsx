@@ -1,10 +1,11 @@
-import { useGetSingleGameQuery } from '../../store/slices/gamesAPI'
+import { useGetSingleGameQuery } from '../../api/gamesAPI'
 import { getCurrentDate } from '../../features/getCurrentDate'
 import { useAuthorization } from '../../store/hooks'
 import {
+    useGetUserFavoritesQuery,
     useLazyGetUserFavoritesQuery,
     useLazyUpdateUserFavoritesQuery,
-} from '../../store/slices/firestoreApi'
+} from '../../api/firestoreApi'
 import { Loader } from '../loader/loader'
 import React from 'react'
 import './gameCard.css'
@@ -15,19 +16,27 @@ interface IgameCardProps {
 }
 
 function GameCard({ gameId }: IgameCardProps) {
-    const { isAuth } = useAuthorization()
+    const { email, isAuth } = useAuthorization()
     const { data, isLoading, isFetching, isSuccess, isError, error } =
         useGetSingleGameQuery({ gameId: gameId })
+    const { data: dataFav, isSuccess: isSuccessFav } = useGetUserFavoritesQuery(
+        { email: email }
+    )
 
     const [trigger] = useLazyUpdateUserFavoritesQuery()
     const [triggerGet] = useLazyGetUserFavoritesQuery()
-    const { email } = useAuthorization()
 
     let content
 
     if (isLoading || isFetching) {
         content = <Loader />
-    } else if (isSuccess) {
+    } else if (isSuccess && isSuccessFav) {
+        const dataArrFav = Object.values(dataFav)
+        const IdsArr = dataArrFav.map(e => {
+            return Number(e.id)
+        })
+        const isInFavorites = IdsArr.includes(gameId)
+
         content = (
             <div className='game'>
                 <h2 className='game__name'>{data.name}</h2>
@@ -41,7 +50,7 @@ function GameCard({ gameId }: IgameCardProps) {
                     alt={data.name}
                 />
                 <button
-                    disabled={!isAuth}
+                    disabled={!isAuth || isInFavorites}
                     className='game__add'
                     onClick={() => {
                         trigger({

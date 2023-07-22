@@ -1,7 +1,7 @@
-import { firestoreApi } from './slices/firestoreApi'
 import userReducer from './slices/user'
-import { gamesApi } from './slices/gamesAPI'
 import { userMiddleware } from './middleware/userMiddleware'
+import { firestoreApi } from '../api/firestoreApi'
+import { gamesApi } from '../api/gamesAPI'
 import { reducer as formReducer } from 'redux-form'
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit'
 
