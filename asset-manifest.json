@@ -1,9 +1,9 @@
 {
   "files": {
-    "main.css": "/AstonReact/static/css/main.c1bcab70.css",
-    "main.js": "/AstonReact/static/js/main.0efd257b.js",
-    "static/css/448.27b734ef.chunk.css": "/AstonReact/static/css/448.27b734ef.chunk.css",
-    "static/js/448.3b432e32.chunk.js": "/AstonReact/static/js/448.3b432e32.chunk.js",
+    "main.css": "/AstonReact/static/css/main.6ba8c5bb.css",
+    "main.js": "/AstonReact/static/js/main.91146d66.js",
+    "static/css/448.6c67acb2.chunk.css": "/AstonReact/static/css/448.6c67acb2.chunk.css",
+    "static/js/448.6b5f6bc3.chunk.js": "/AstonReact/static/js/448.6b5f6bc3.chunk.js",
     "static/css/518.72eb0079.chunk.css": "/AstonReact/static/css/518.72eb0079.chunk.css",
     "static/js/518.0c43c636.chunk.js": "/AstonReact/static/js/518.0c43c636.chunk.js",
     "static/css/763.f637cbc5.chunk.css": "/AstonReact/static/css/763.f637cbc5.chunk.css",
@@ -13,10 +13,10 @@
     "static/js/787.deacaecf.chunk.js": "/AstonReact/static/js/787.deacaecf.chunk.js",
     "static/media/logo.png": "/AstonReact/static/media/logo.a1d3e024ae7c13092867.png",
     "index.html": "/AstonReact/index.html",
-    "main.c1bcab70.css.map": "/AstonReact/static/css/main.c1bcab70.css.map",
-    "main.0efd257b.js.map": "/AstonReact/static/js/main.0efd257b.js.map",
-    "448.27b734ef.chunk.css.map": "/AstonReact/static/css/448.27b734ef.chunk.css.map",
-    "448.3b432e32.chunk.js.map": "/AstonReact/static/js/448.3b432e32.chunk.js.map",
+    "main.6ba8c5bb.css.map": "/AstonReact/static/css/main.6ba8c5bb.css.map",
+    "main.91146d66.js.map": "/AstonReact/static/js/main.91146d66.js.map",
+    "448.6c67acb2.chunk.css.map": "/AstonReact/static/css/448.6c67acb2.chunk.css.map",
+    "448.6b5f6bc3.chunk.js.map": "/AstonReact/static/js/448.6b5f6bc3.chunk.js.map",
     "518.72eb0079.chunk.css.map": "/AstonReact/static/css/518.72eb0079.chunk.css.map",
     "518.0c43c636.chunk.js.map": "/AstonReact/static/js/518.0c43c636.chunk.js.map",
     "763.f637cbc5.chunk.css.map": "/AstonReact/static/css/763.f637cbc5.chunk.css.map",
@@ -26,7 +26,7 @@
     "787.deacaecf.chunk.js.map": "/AstonReact/static/js/787.deacaecf.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c1bcab70.css",
-    "static/js/main.0efd257b.js"
+    "static/css/main.6ba8c5bb.css",
+    "static/js/main.91146d66.js"
   ]
 }
