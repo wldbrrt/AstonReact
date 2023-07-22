@@ -17,7 +17,7 @@
 
 - Используется Modern Redux with Redux Toolkit
 - Используются слайсы (https://github.com/wldbrrt/AstonReact/tree/main/src/store/slices)
-- Есть кастомная мидлвара ()
+- Есть кастомная мидлвара (https://github.com/wldbrrt/AstonReact/blob/main/src/store/middleware/userMiddleware.ts)
 - Используется RTK Query (https://github.com/wldbrrt/AstonReact/blob/main/src/store/slices/gamesAPI.ts)
 - Используется Transforming Responses (https://github.com/wldbrrt/AstonReact/blob/main/src/store/slices/gamesAPI.ts)
 
