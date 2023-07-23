@@ -66,7 +66,7 @@ function GameCard({ gameId }: IgameCardProps) {
                             triggerGet({ email: email })
                         }}
                     >
-                        Add to Favorite
+                        {isInFavorites ? 'In Favorites' : `Add to Favorite`}
                     </button>
                     <span className='game__description'>
                         {data.description_raw}
