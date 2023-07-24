@@ -51,6 +51,6 @@ export const useFirebaseAuth = () => {
                 dispatch(removeUser())
             }
         })
-        return unsubscribe()
+        return () => unsubscribe()
     }, [])
 }
