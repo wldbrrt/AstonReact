@@ -36,9 +36,9 @@ export function useDebounce<T>(value: T | string, delay: number) {
 }
 
 export const useFirebaseAuth = () => {
-    const auth = getAuth()
     const dispatch = useAppDispatch()
     useEffect(() => {
+        const auth = getAuth()
         const unsubscribe = onAuthStateChanged(auth, user => {
             if (user) {
                 dispatch(
