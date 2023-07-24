@@ -1,14 +1,14 @@
-import { useAuthorization, useAppDispatch } from '../../store/hooks'
-import { removeUser } from '../../store/slices/user'
-import { getAuth, signOut } from 'firebase/auth'
+import { useAppDispatch, useAuthorization } from '../../store/hooks'
+import { handleLogOutUser } from '../../api/authentication'
 import { NavLink, useNavigate } from 'react-router-dom'
 import React from 'react'
 import './navigation.css'
 
 function Navigation() {
     const { email, isAuth } = useAuthorization()
-    const dispatch = useAppDispatch()
     const navigate = useNavigate()
+    const dispatch = useAppDispatch()
+    const handleLogOut = handleLogOutUser(dispatch, navigate)
 
     return isAuth ? (
         <div className='header__nav'>
@@ -18,15 +18,7 @@ function Navigation() {
             </nav>
             <button
                 className='header__button'
-                onClick={() => {
-                    const auth = getAuth()
-                    signOut(auth)
-                        .then(() => {
-                            dispatch(removeUser())
-                            navigate('/SignIn')
-                        })
-                        .catch(error => alert(error))
-                }}
+                onClick={handleLogOut}
             >
                 Log Out from {email}
             </button>
