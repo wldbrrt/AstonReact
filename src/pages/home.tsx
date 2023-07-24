@@ -20,6 +20,11 @@ function Home() {
         })
     }, [gameName, pageNumber])
 
+    useEffect(() => {
+        setGameName(value.get('search') || '')
+        setPagenumber(Number(value.get('page')) || 1)
+    }, [value])
+
     return (
         <div className={lightTheme ? 'home' : 'home _black'}>
             <Search
