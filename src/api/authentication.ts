@@ -1,6 +1,4 @@
 import { AppDispatch } from './../store/store'
-import { useLazySetUserHistoryQuery } from './firestoreApi'
-import { useAppDispatch } from '../store/hooks'
 import { removeUser, setUser } from '../store/slices/user'
 import {
     IHistoryQueryParams,
@@ -14,10 +12,10 @@ import {
     signInWithEmailAndPassword,
     signOut,
 } from 'firebase/auth'
-import { NavigateFunction, useNavigate } from 'react-router-dom'
-
+import { NavigateFunction } from 'react-router-dom'
 import { BaseQueryFn, QueryDefinition } from '@reduxjs/toolkit/dist/query'
 import type { LazyQueryTrigger } from '@reduxjs/toolkit/dist/query/react/buildHooks'
+
 export const handleRegisterUser =
     (
         dispatch: AppDispatch,

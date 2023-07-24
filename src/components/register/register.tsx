@@ -1,6 +1,5 @@
 import { Form } from '../form/form'
 import { handleRegisterUser } from '../../api/authentication'
-
 import { useAppDispatch } from '../../store/hooks'
 import { useLazySetUserHistoryQuery } from '../../api/firestoreApi'
 import { useNavigate } from 'react-router-dom'
