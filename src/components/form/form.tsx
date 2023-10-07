@@ -21,8 +21,8 @@ function RegistrationForm({ title, handleClick }: FormProps) {
     const { isAuth } = useAuthorization()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [isEmailInvalid, setIsEmailValid] = useState()
-    const [isPassInvalid, setIsPassValid] = useState()
+    const [isEmailInvalid, setIsEmailValid] = useState(true)
+    const [isPassInvalid, setIsPassValid] = useState(true)
 
     return (
         <div className='form__contaiter'>
@@ -51,7 +51,7 @@ function RegistrationForm({ title, handleClick }: FormProps) {
                 setValid={setIsPassValid}
             />
             <button
-                className='form__button'
+                className='form__button button'
                 disabled={isAuth || isEmailInvalid || isPassInvalid}
                 onClick={() => handleClick(email, password)}
             >

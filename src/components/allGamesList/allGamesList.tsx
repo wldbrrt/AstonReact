@@ -1,6 +1,8 @@
 import { useGetGamesQuery } from '../../api/gamesAPI'
 import { Loader } from '../loader/loader'
-import { useNavigate, useSearchParams } from 'react-router-dom'
+import { GameCardPreview } from '../gameCardPreview/gameCardPreview'
+import { gamePlatforms } from '../../constants/gamePlatforms'
+import { useSearchParams } from 'react-router-dom'
 import React, { useEffect } from 'react'
 import './allGamesList.css'
 
@@ -11,7 +13,6 @@ interface GameListProps {
 
 function AllGamesList({ size, isLastPageSetter }: GameListProps) {
     const [value] = useSearchParams()
-    const navigate = useNavigate()
     const { data, isLoading, isFetching, isSuccess, isError } =
         useGetGamesQuery({
             pageNumber: Number(value.get('page')) || 1,
@@ -29,26 +30,23 @@ function AllGamesList({ size, isLastPageSetter }: GameListProps) {
     } else if (isSuccess && !data?.count) {
         content = 'Nothing has found'
     } else if (isSuccess) {
-        content = data.results.map(game => (
-            <div
-                key={game.id}
-                className='allGamesList__item'
-                onClick={() => navigate(`/Game/${game.id}`)}
-            >
-                <img
-                    className='allGamesList__img'
-                    src={game.background_image}
-                    alt={game.name}
+        content = data.results.map(game => {
+            const platfromsSet = new Set(
+                game.platforms.map(e => gamePlatforms[e.platform.name])
+            )
+            return (
+                <GameCardPreview
+                    key={game.id}
+                    id={game.id}
+                    image={game.background_image}
+                    name={game.name}
+                    rating={game.rating}
+                    released={game.released}
+                    genres={game.genres.map(e => e.name)}
+                    platforms={Array.from(platfromsSet)}
                 />
-                <h2 className='allGamesList__name'>{game.name}</h2>
-                <div className='allGamesList__rating'>
-                    Rating: {game.rating} / 5
-                </div>
-                <span className='allGamesList__date'>
-                    Released: {game.released}
-                </span>
-            </div>
-        ))
+            )
+        })
     } else if (isError) {
         content = <div>{'SOMETHING WENT WRONG'}</div>
     }

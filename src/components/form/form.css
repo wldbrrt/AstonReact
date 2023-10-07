@@ -8,20 +8,27 @@
 }
 
 .form__head {
-    font-size: 40px;
+    color: #fff;
+    font-family: Rebellion;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 64px; /* 133.333% */
 }
 
 .form__contaiter {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 56px;
+    margin-top: 70px;
 }
 
 .form__input {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    position: relative;
 }
 
 .form__name {
@@ -29,27 +36,44 @@
 }
 
 .form__field {
-    width: 400px;
-    height: 50px;
-    font-size: 30px;
-    border-radius: 20px;
+    width: 700px;
+    height: 60px;
+    color: white;
+    font-family: Rationale;
+    font-size: 24px;
     padding: 5px 10px;
-    border: black solid 3px;
 }
 
 .form__button {
-    font-size: 30px;
-    border-radius: 20px;
-    padding: 10px 10px;
-    border: black solid 3px;
     width: 200px;
-    margin-top: 40px;
+    height: 50px;
+    font-size: 16px;
 }
 
 .form__tip {
-    font-size: 20px;
+    color: #fff;
+    font-family: Rationale;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 171.429% */
+    text-transform: lowercase;
+    margin-top: 10px;
+}
+
+.form_link {
+    color: #666be5;
 }
 
 .form__message {
     position: absolute;
+    top: -25px;
+    left: 0px;
+    color: #be4687;
+    font-family: Rationale;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 150% */
+    text-transform: lowercase;
 }

@@ -8,7 +8,13 @@ function SignIn() {
             <h2 className='form__head'>Log In</h2>
             <LogIn />
             <p className='form__tip'>
-                Dont have account yet? <Link to='/SignUp'>Register</Link>
+                Dont have account yet?{' '}
+                <Link
+                    className='form_link'
+                    to='/SignUp'
+                >
+                    Register
+                </Link>
             </p>
         </div>
     )

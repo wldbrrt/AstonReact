@@ -27,13 +27,12 @@ function Input({
 
     return (
         <div className='form__input'>
-            <label className='form__name'>{placeholder}</label>
             <div className='form__item'>
                 <input
                     {...input}
                     placeholder={placeholder}
                     type={type}
-                    className='form__field'
+                    className='form__field input'
                 />
                 {touched &&
                     ((error && (

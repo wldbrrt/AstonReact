@@ -1,6 +1,17 @@
+#root {
+    background-image: url('./assets/main_background.svg'),
+        linear-gradient(
+            270deg,
+            #260129 0%,
+            #06193f 33.33%,
+            #06193f 66.67%,
+            #260129 100%
+        );
+}
+
 .App {
     max-width: 1600px;
-    padding: 0 5%;
+    padding: 0 35px;
     position: relative;
     margin: 0 auto;
     min-height: 100vh;

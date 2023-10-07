@@ -5,6 +5,8 @@ export interface Igame {
     released: string
     rating: number
     description_raw: string
+    genres: { name: string }[]
+    platforms: { platform: { name: string } }[]
 }
 export interface ApiResponse {
     count: number

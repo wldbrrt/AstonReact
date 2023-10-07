@@ -11,28 +11,39 @@ function Navigation() {
     const handleLogOut = handleLogOutUser(dispatch, navigate)
 
     return isAuth ? (
-        <div className='header__nav'>
+        <>
             <nav className='header__nav'>
-                <NavLink to='/Favorites'>Favorites</NavLink>
-                <NavLink to='/History'>History</NavLink>
+                <NavLink
+                    className={'header__link header__splitline'}
+                    to='/Favorites'
+                >
+                    Favorites
+                </NavLink>
+
+                <NavLink
+                    className={'header__link'}
+                    to='/History'
+                >
+                    History
+                </NavLink>
             </nav>
             <button
-                className='header__button'
+                className='header__button button'
                 onClick={handleLogOut}
             >
                 Log Out from {email}
             </button>
-        </div>
+        </>
     ) : (
-        <div className='header__nav'>
+        <div className='header__nav header__nav_unauth'>
             <button
-                className='header__button'
+                className='header__button button header__button_unauth'
                 onClick={() => navigate('/SignIn')}
             >
                 Sign In
             </button>
             <button
-                className='header__button'
+                className='header__button button header__button_unauth'
                 onClick={() => navigate('/SignUp')}
             >
                 Sign Up

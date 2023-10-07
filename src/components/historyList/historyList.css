@@ -4,12 +4,17 @@
     font-size: 24px;
     display: grid;
     grid-template-rows: 80px 1fr;
-    background-color: #00000050;
+    color: #fff;
+    font-family: Rationale;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 100% */
+    text-transform: uppercase;
 }
 
 .historyList__button {
     font-size: 20px;
-    border-radius: 10px;
     height: 30px;
     width: 200px;
     justify-self: flex-end;
@@ -17,21 +22,37 @@
 }
 
 .historyList__container {
-    width: 60%;
+    width: 100%;
     justify-self: center;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 70px;
+}
+
+.historyList__wrapper {
+    margin-top: 17px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(2.5px);
+    width: 100%;
+    padding: 30px 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
 }
 
 .histotyList__item {
     display: flex;
     justify-content: space-between;
-    background-color: #00000080;
-    border-radius: 20px;
-    border: solid black 2px;
     color: whitesmoke;
     padding: 5px 10px;
+    border-bottom: rgba(255, 255, 255, 0.2) solid;
+    cursor: pointer;
+    transition: 300ms;
+}
+
+.histotyList__item:hover {
+    color: #be4787;
 }
 
 .histotyList__name {

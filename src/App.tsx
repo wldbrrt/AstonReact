@@ -24,7 +24,7 @@ export const Theme = createContext<ContextType>({
 })
 
 function App() {
-    const { isAuth } = useAuthorization()
+    const { isAuth, isAuthenticating } = useAuthorization()
     useFirebaseAuth()
     const [lightTheme, setLightTheme] = useState(true)
     const memoTheme = useMemo(
@@ -37,78 +37,92 @@ function App() {
             <div className={lightTheme ? 'App' : 'App _black'}>
                 <BrowserRouter>
                     <Suspense fallback={<Loader />}>
-                        <Header />
-                        <Routes>
-                            <Route
-                                path='*'
-                                element={<div>WRONG PAGE</div>}
-                            />
-                            <Route
-                                path='/'
-                                element={
-                                    <ErrorBoundary
-                                        fallback={
-                                            <div>Something went wrong</div>
+                        {isAuthenticating ? (
+                            <Loader />
+                        ) : (
+                            <>
+                                <Header />
+                                <Routes>
+                                    <Route
+                                        path='*'
+                                        element={<div>WRONG PAGE</div>}
+                                    />
+                                    <Route
+                                        path='/'
+                                        element={
+                                            <ErrorBoundary
+                                                fallback={
+                                                    <div>
+                                                        Something went wrong
+                                                    </div>
+                                                }
+                                            >
+                                                <Home />
+                                            </ErrorBoundary>
                                         }
-                                    >
-                                        <Home />
-                                    </ErrorBoundary>
-                                }
-                            />
+                                    />
 
-                            <Route
-                                path='/SignUp'
-                                element={<SignUp />}
-                            />
-                            <Route
-                                path='/SignIn'
-                                element={<SignIn />}
-                            />
-                            <Route
-                                path='/Favorites'
-                                element={
-                                    <ErrorBoundary
-                                        fallback={
-                                            <div>Something went wrong</div>
+                                    <Route
+                                        path='/SignUp'
+                                        element={<SignUp />}
+                                    />
+                                    <Route
+                                        path='/SignIn'
+                                        element={<SignIn />}
+                                    />
+                                    <Route
+                                        path='/Favorites'
+                                        element={
+                                            <ErrorBoundary
+                                                fallback={
+                                                    <div>
+                                                        Something went wrong
+                                                    </div>
+                                                }
+                                            >
+                                                {isAuth ? (
+                                                    <Favorites />
+                                                ) : (
+                                                    <Navigate to={'/SignUp'} />
+                                                )}
+                                            </ErrorBoundary>
                                         }
-                                    >
-                                        {isAuth ? (
-                                            <Favorites />
-                                        ) : (
-                                            <Navigate to={'/SignUp'} />
-                                        )}
-                                    </ErrorBoundary>
-                                }
-                            />
-                            <Route
-                                path='/History'
-                                element={
-                                    <ErrorBoundary
-                                        fallback={
-                                            <div>Something went wrong</div>
+                                    />
+                                    <Route
+                                        path='/History'
+                                        element={
+                                            <ErrorBoundary
+                                                fallback={
+                                                    <div>
+                                                        Something went wrong
+                                                    </div>
+                                                }
+                                            >
+                                                {isAuth ? (
+                                                    <History />
+                                                ) : (
+                                                    <Navigate to={'/SignUp'} />
+                                                )}
+                                            </ErrorBoundary>
                                         }
-                                    >
-                                        {isAuth ? (
-                                            <History />
-                                        ) : (
-                                            <Navigate to={'/SignUp'} />
-                                        )}
-                                    </ErrorBoundary>
-                                }
-                            />
-                            <Route
-                                path='/Game/:id'
-                                element={
-                                    <ErrorBoundary
-                                        fallback={
-                                            <div>Something went wrong</div>
+                                    />
+                                    <Route
+                                        path='/Game/:id'
+                                        element={
+                                            <ErrorBoundary
+                                                fallback={
+                                                    <div>
+                                                        Something went wrong
+                                                    </div>
+                                                }
+                                            >
+                                                <Game />
+                                            </ErrorBoundary>
                                         }
-                                    >
-                                        <Game />
-                                    </ErrorBoundary>
-                                }
-                            />
-                        </Routes>
+                                    />
+                                </Routes>{' '}
+                            </>
+                        )}
                     </Suspense>
                 </BrowserRouter>
             </div>

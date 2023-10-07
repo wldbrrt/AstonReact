@@ -1,11 +1,24 @@
 .search {
-    width: 100%;
     padding-top: 20px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 83%;
 }
 
 .search__button {
-    width: 10%;
-    font-size: 20px;
     padding: 10px 10px;
-    border-radius: 20px;
+    position: absolute;
+    background: none;
+    border: none;
+    right: 10px;
+    top: 23px;
+}
+
+.search__icon {
+    fill: white;
+    transition: 300ms;
+}
+.search__icon:hover {
+    fill: #be4787;
 }

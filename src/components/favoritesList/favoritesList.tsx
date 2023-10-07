@@ -5,17 +5,25 @@ import {
 } from '../../api/firestoreApi'
 import { useAuthorization } from '../../store/hooks'
 import { Loader } from '../loader/loader'
-import { useNavigate } from 'react-router-dom'
+import { GameCardPreview } from '../gameCardPreview/gameCardPreview'
 import React from 'react'
 import './favoritesList.css'
 
 function FavoritesList() {
-    const navigate = useNavigate()
     const { email } = useAuthorization()
     const [triggerDelete] = useLazyDeleteUserFavoritesQuery()
     const [triggerGet] = useLazyGetUserFavoritesQuery()
     const { data, isSuccess, isLoading, isFetching, isError } =
         useGetUserFavoritesQuery({ email: email })
+
+    const onClickHandler = async (
+        e: React.MouseEvent<HTMLElement>,
+        id: number
+    ) => {
+        e.stopPropagation()
+        triggerDelete({ email: email, id: String(id) })
+        triggerGet({ email: email })
+    }
 
     let content
     if (isLoading || isFetching) {
@@ -26,29 +34,15 @@ function FavoritesList() {
             return <div className='favorites'>Nothing was found</div>
         }
         content = dataArr.map(game => (
-            <div
+            <GameCardPreview
                 key={game.id}
-                className='favorites__item'
-                onClick={() => navigate(`/Game/${game.id}`)}
-            >
-                <img
-                    className='favorites__img'
-                    src={game.background_image}
-                    alt={game.name}
-                />
-                <h2 className='favorites__name'>{game.name}</h2>
-                <button
-                    onClick={async e => {
-                        e.stopPropagation()
-                        triggerDelete({ email: email, id: String(game.id) })
-                        triggerGet({ email: email })
-                    }}
-                    className='favorites__delete'
-                >
-                    Remove from favorites
-                </button>
-                <span className='favorites__date'>Added {game.date}</span>
-            </div>
+                id={game.id}
+                image={game.background_image}
+                name={game.name}
+                released={game.date}
+                isFauvorite={true}
+                favoriteOnClickHandler={onClickHandler}
+            />
         ))
     } else if (isError) {
         content = <div>Something went wrong</div>

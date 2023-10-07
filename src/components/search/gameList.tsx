@@ -1,4 +1,5 @@
 import { useGetGamesQuery } from '../../api/gamesAPI'
+import { Loader } from '../loader/loader'
 import { useNavigate } from 'react-router-dom'
 import React from 'react'
 import './gameList.css'
@@ -18,7 +19,11 @@ function GameList({ pages, size, name, isInputFocused }: GameListProps) {
 
     let content
     if (isLoading || isFetching) {
-        content = 'LOADING'
+        content = (
+            <div className='search__loader'>
+                <Loader />
+            </div>
+        )
     } else if (isSuccess && !data?.count) {
         content = 'Nothing has found'
     } else if (isSuccess) {

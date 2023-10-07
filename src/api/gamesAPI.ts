@@ -40,6 +40,8 @@ export const gamesApi = createApi({
                     released: responce.released,
                     rating: responce.rating,
                     description_raw: responce.description_raw,
+                    genres: responce.genres,
+                    platforms: responce.platforms,
                 }
             },
         }),

@@ -13,5 +13,5 @@ export const getCurrentDate = () => {
         ':' +
         currentdate.getSeconds()
 
-    return result
+    return new Date().toISOString()
 }
