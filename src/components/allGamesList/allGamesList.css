@@ -8,9 +8,17 @@
     flex-wrap: wrap;
     gap: 37px;
     min-height: 100%;
+    width: 100%;
     position: relative;
     z-index: 2;
     overflow: hidden;
+    color: #fff;
+    font-family: Rationale;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 100% */
+    text-transform: uppercase;
 }
 
 .allGamesList__fullInfo {
@@ -34,6 +42,7 @@
     font-weight: 400;
     line-height: 100%;
     padding: 20px;
+    font-size: 16px;
 }
 
 .allGamesList__fullInfo_Active {

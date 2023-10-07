@@ -32,6 +32,10 @@
     cursor: pointer;
 }
 
+.search__item h2 {
+    text-align: left;
+}
+
 .search__item:hover {
     background: rgba(255, 255, 255, 0.1);
 }
@@ -44,4 +48,16 @@
 .search__loader {
     position: relative;
     max-height: 30vh;
+}
+
+@media only screen and (max-width: 1400px) {
+    .search__list {
+        width: 60%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .search__list {
+        width: 100%;
+    }
 }

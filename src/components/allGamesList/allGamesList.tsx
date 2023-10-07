@@ -1,27 +1,33 @@
-import { useGetGamesQuery } from '../../api/gamesAPI'
 import { Loader } from '../loader/loader'
 import { GameCardPreview } from '../gameCardPreview/gameCardPreview'
 import { gamePlatforms } from '../../constants/gamePlatforms'
-import { useSearchParams } from 'react-router-dom'
+import { ApiResponse } from '../../types/gamesApiTypes'
 import React, { useEffect } from 'react'
 import './allGamesList.css'
 
 interface GameListProps {
-    size: number
     isLastPageSetter: (value: boolean) => void
+    data: ApiResponse | undefined
+    isLoading: boolean
+    isFetching: boolean
+    isSuccess: boolean
+    isError: boolean
 }
 
-function AllGamesList({ size, isLastPageSetter }: GameListProps) {
-    const [value] = useSearchParams()
-    const { data, isLoading, isFetching, isSuccess, isError } =
-        useGetGamesQuery({
-            pageNumber: Number(value.get('page')) || 1,
-            pageSize: size,
-            gameName: value.get('search') || '',
-        })
-
+function AllGamesList({
+    isLastPageSetter,
+    data,
+    isLoading,
+    isFetching,
+    isSuccess,
+    isError,
+}: GameListProps) {
     useEffect(() => {
-        if (data) isLastPageSetter(Boolean(!data.next))
+        if (data) {
+            isLastPageSetter(Boolean(!data.next))
+        } else {
+            isLastPageSetter(true)
+        }
     }, [data])
 
     let content
@@ -29,7 +35,7 @@ function AllGamesList({ size, isLastPageSetter }: GameListProps) {
         content = <Loader />
     } else if (isSuccess && !data?.count) {
         content = 'Nothing has found'
-    } else if (isSuccess) {
+    } else if (isSuccess && data) {
         content = data.results.map(game => {
             const platfromsSet = new Set(
                 game.platforms.map(e => gamePlatforms[e.platform.name])

@@ -5,6 +5,13 @@
     gap: 20px;
     min-height: 100%;
     padding: 20px 20px;
+    color: #fff;
+    font-family: Rationale;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 100% */
+    text-transform: uppercase;
 }
 
 .favorites__item {

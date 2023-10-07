@@ -9,4 +9,8 @@
 .header__logo {
     height: 70px;
     border-radius: 40px;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 900px) {
 }

@@ -2,6 +2,7 @@ import { Search } from '../components/search/search'
 import { AllGamesList } from '../components/allGamesList/allGamesList'
 import { PageControlls } from '../components/allGamesList/pageControlls'
 import { Theme } from '../App'
+import { useGetGamesQuery } from '../api/gamesAPI'
 import { useSearchParams } from 'react-router-dom'
 import React, { useContext, useEffect, useState } from 'react'
 import './home.css'
@@ -12,6 +13,14 @@ function Home() {
     const [pageNumber, setPagenumber] = useState(Number(value.get('page')) || 1)
     const [isLastPage, setIsLastPage] = useState(true)
     const { lightTheme } = useContext(Theme)
+
+    const { data, isLoading, isFetching, isSuccess, isError } =
+        useGetGamesQuery({
+            pageNumber: Number(value.get('page')) || 1,
+            pageSize: 20,
+            gameName: value.get('search') || '',
+        })
+
     useEffect(() => {
         setValue(params => {
             params.set('search', gameName)
@@ -32,20 +41,32 @@ function Home() {
                 onClickPageReset={setPagenumber}
             />
             <h1 className='home__title'>{gameName ? gameName : 'top games'}</h1>
-            <PageControlls
-                page={pageNumber}
-                onClickHandler={setPagenumber}
-                isLastPage={isLastPage}
-            />
+            {isSuccess && !isError && !!data?.count && (
+                <PageControlls
+                    page={pageNumber}
+                    onClickHandler={setPagenumber}
+                    isLastPage={isLastPage}
+                    isLoading={isLoading}
+                    isFetching={isFetching}
+                />
+            )}
             <AllGamesList
-                size={21}
                 isLastPageSetter={setIsLastPage}
+                data={data}
+                isLoading={isLoading}
+                isFetching={isFetching}
+                isSuccess={isSuccess}
+                isError={isError}
             />
-            <PageControlls
-                page={pageNumber}
-                onClickHandler={setPagenumber}
-                isLastPage={isLastPage}
-            />
+            {isSuccess && !isError && !!data?.count && (
+                <PageControlls
+                    page={pageNumber}
+                    onClickHandler={setPagenumber}
+                    isLastPage={isLastPage}
+                    isLoading={isLoading}
+                    isFetching={isFetching}
+                />
+            )}
         </div>
     )
 }

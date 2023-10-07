@@ -21,3 +21,9 @@
     background-color: black;
     color: bisque;
 }
+
+@media only screen and (max-width: 800px) {
+    .App {
+        padding: 0 10px;
+    }
+}

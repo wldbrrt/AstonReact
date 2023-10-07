@@ -1,5 +1,6 @@
 .loader {
     height: 80vh;
+    z-index: 3;
 }
 .loader__container {
     position: absolute;

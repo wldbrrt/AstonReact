@@ -22,3 +22,9 @@
 .search__icon:hover {
     fill: #be4787;
 }
+
+@media only screen and (max-width: 768px) {
+    .search {
+        width: 100%;
+    }
+}

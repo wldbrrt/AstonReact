@@ -5,12 +5,16 @@ interface PageControllsProps {
     page: number
     onClickHandler: (page: number) => void
     isLastPage: boolean
+    isLoading: boolean
+    isFetching: boolean
 }
 
 function PageControlls({
     page,
     onClickHandler,
     isLastPage,
+    isLoading,
+    isFetching,
 }: PageControllsProps) {
     const scrollToTop = () => {
         window.scrollTo({ top: 0 })
@@ -19,7 +23,7 @@ function PageControlls({
     return (
         <div className='pageControlls'>
             <button
-                disabled={page <= 1}
+                disabled={page <= 1 || isLoading || isFetching}
                 onClick={() => {
                     onClickHandler(1)
                     scrollToTop()
@@ -41,7 +45,7 @@ function PageControlls({
                 to №1
             </button>
             <button
-                disabled={page <= 1}
+                disabled={page <= 1 || isLoading || isFetching}
                 onClick={() => {
                     onClickHandler(page - 1)
                     scrollToTop()
@@ -63,7 +67,7 @@ function PageControlls({
                 prev
             </button>
             <button
-                disabled={isLastPage}
+                disabled={isLastPage || isLoading || isFetching}
                 onClick={() => {
                     onClickHandler(page + 1)
                     scrollToTop()

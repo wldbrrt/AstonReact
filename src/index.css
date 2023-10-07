@@ -19,6 +19,7 @@
     border: 1.006px solid rgba(255, 255, 255, 0.25);
     backdrop-filter: blur(5px);
     transition: 300ms;
+    cursor: pointer;
 }
 
 .button:hover {

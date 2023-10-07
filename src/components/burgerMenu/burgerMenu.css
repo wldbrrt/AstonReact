@@ -1,0 +1,100 @@
+.burgerMenu {
+    display: flex;
+    position: fixed;
+    z-index: 3;
+    left: 0;
+    top: -100vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    padding: 50px;
+    background: linear-gradient(
+        180deg,
+        rgba(6, 6, 6, 0.5),
+        rgba(6, 6, 6, 0.7),
+        rgba(6, 6, 6, 1)
+    );
+    backdrop-filter: blur(10px);
+    transition: 300ms;
+}
+
+.burgerMenu_active {
+    top: 0px;
+}
+
+.burgerMenu__closeButton {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 30px;
+    right: 50px;
+    background: none;
+}
+
+.burgerMenu__button {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 30px;
+    right: 50px;
+    background: none;
+    z-index: 4;
+    border: none;
+}
+
+.burgerMenu__lines {
+    position: relative;
+    border: solid white 2px;
+    display: block;
+    width: 30px;
+}
+
+.burgerMenu__lines::before {
+    content: '';
+    width: 26px;
+    border: solid white 2px;
+    position: absolute;
+    top: -12px;
+    left: -2px;
+    transition: 200ms;
+}
+
+.burgerMenu__lines::after {
+    content: '';
+    width: 26px;
+    border: solid white 2px;
+    position: absolute;
+    bottom: -12px;
+    left: -2px;
+    transition: 200ms;
+}
+
+.burgerMenu__lines_active {
+    position: relative;
+    border: solid white 0px;
+    display: block;
+    width: 30px;
+}
+
+.burgerMenu__lines_active::before {
+    content: '';
+    width: 32px;
+    border: solid white 2px;
+    position: absolute;
+    top: -2px;
+    left: -4px;
+    transform: rotate(135deg);
+}
+
+.burgerMenu__lines_active::after {
+    content: '';
+    width: 32px;
+    border: solid white 2px;
+    position: absolute;
+    bottom: -2px;
+    left: -4px;
+    transform: rotate(-135deg);
+}

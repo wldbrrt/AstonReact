@@ -32,3 +32,19 @@
 .pageControlls_icon {
     fill: white;
 }
+
+@media only screen and (max-width: 768px) {
+    .pageControlls_button {
+        font-size: 16px;
+        padding: 5px 15px;
+        width: 80px;
+        height: 40px;
+        gap: 10px;
+    }
+}
+
+@media only screen and (max-width: 460px) {
+    .pageControlls {
+        justify-content: flex-end;
+    }
+}
