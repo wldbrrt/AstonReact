@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/AstonReact/static/css/main.09e20564.css",
-    "main.js": "/AstonReact/static/js/main.4cc5025e.js",
-    "static/css/461.34c94f21.chunk.css": "/AstonReact/static/css/461.34c94f21.chunk.css",
+    "main.js": "/AstonReact/static/js/main.af8f6de2.js",
+    "static/css/461.090f7fd4.chunk.css": "/AstonReact/static/css/461.090f7fd4.chunk.css",
     "static/js/461.8b48d5b3.chunk.js": "/AstonReact/static/js/461.8b48d5b3.chunk.js",
     "static/css/518.84902ac4.chunk.css": "/AstonReact/static/css/518.84902ac4.chunk.css",
     "static/js/518.ac33b6f4.chunk.js": "/AstonReact/static/js/518.ac33b6f4.chunk.js",
@@ -16,8 +16,8 @@
     "static/media/Rebellion-oPoA.ttf": "/AstonReact/static/media/Rebellion-oPoA.398489221b87268c489c.ttf",
     "index.html": "/AstonReact/index.html",
     "main.09e20564.css.map": "/AstonReact/static/css/main.09e20564.css.map",
-    "main.4cc5025e.js.map": "/AstonReact/static/js/main.4cc5025e.js.map",
-    "461.34c94f21.chunk.css.map": "/AstonReact/static/css/461.34c94f21.chunk.css.map",
+    "main.af8f6de2.js.map": "/AstonReact/static/js/main.af8f6de2.js.map",
+    "461.090f7fd4.chunk.css.map": "/AstonReact/static/css/461.090f7fd4.chunk.css.map",
     "461.8b48d5b3.chunk.js.map": "/AstonReact/static/js/461.8b48d5b3.chunk.js.map",
     "518.84902ac4.chunk.css.map": "/AstonReact/static/css/518.84902ac4.chunk.css.map",
     "518.ac33b6f4.chunk.js.map": "/AstonReact/static/js/518.ac33b6f4.chunk.js.map",
@@ -29,6 +29,6 @@
   },
   "entrypoints": [
     "static/css/main.09e20564.css",
-    "static/js/main.4cc5025e.js"
+    "static/js/main.af8f6de2.js"
   ]
 }
