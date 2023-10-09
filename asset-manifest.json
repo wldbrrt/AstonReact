@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/AstonReact/static/css/main.b83a3493.css",
+    "main.css": "/AstonReact/static/css/main.05a6a720.css",
     "main.js": "/AstonReact/static/js/main.597d4427.js",
     "static/css/461.eae99fca.chunk.css": "/AstonReact/static/css/461.eae99fca.chunk.css",
     "static/js/461.342a9903.chunk.js": "/AstonReact/static/js/461.342a9903.chunk.js",
@@ -15,7 +15,7 @@
     "static/media/GG_logo.svg": "/AstonReact/static/media/GG_logo.780af9d7f9d00db0d5edb6a4ed52003f.svg",
     "static/media/Rebellion-oPoA.ttf": "/AstonReact/static/media/Rebellion-oPoA.398489221b87268c489c.ttf",
     "index.html": "/AstonReact/index.html",
-    "main.b83a3493.css.map": "/AstonReact/static/css/main.b83a3493.css.map",
+    "main.05a6a720.css.map": "/AstonReact/static/css/main.05a6a720.css.map",
     "main.597d4427.js.map": "/AstonReact/static/js/main.597d4427.js.map",
     "461.eae99fca.chunk.css.map": "/AstonReact/static/css/461.eae99fca.chunk.css.map",
     "461.342a9903.chunk.js.map": "/AstonReact/static/js/461.342a9903.chunk.js.map",
@@ -28,7 +28,7 @@
     "787.deacaecf.chunk.js.map": "/AstonReact/static/js/787.deacaecf.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b83a3493.css",
+    "static/css/main.05a6a720.css",
     "static/js/main.597d4427.js"
   ]
 }
