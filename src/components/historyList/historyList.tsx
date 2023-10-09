@@ -8,6 +8,7 @@ import { Loader } from '../loader/loader'
 import { formatDate } from '../../features/formatDate'
 import { IHistory } from '../../types/firestoreApiTypes'
 import { getDateFromIsoString } from '../../features/getDateFromIsoString'
+import { BackButton } from '../backButton/backButton'
 import { useNavigate } from 'react-router-dom'
 import React from 'react'
 import './historyList.css'
@@ -81,6 +82,9 @@ function HistoryList() {
 
     return (
         <div className='histotyList'>
+            <div className='historyList__backButton'>
+                <BackButton />
+            </div>
             <button
                 onClick={async () => {
                     await triggerDeleteHistory({ email: email })

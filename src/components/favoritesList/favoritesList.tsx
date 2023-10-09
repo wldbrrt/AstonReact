@@ -6,6 +6,7 @@ import {
 import { useAuthorization } from '../../store/hooks'
 import { Loader } from '../loader/loader'
 import { GameCardPreview } from '../gameCardPreview/gameCardPreview'
+import { BackButton } from '../backButton/backButton'
 import React from 'react'
 import './favoritesList.css'
 
@@ -48,7 +49,12 @@ function FavoritesList() {
         content = <div>Something went wrong</div>
     }
 
-    return <div className='favorites'>{content}</div>
+    return (
+        <>
+            <BackButton />
+            <div className='favorites'>{content}</div>
+        </>
+    )
 }
 
 export { FavoritesList }

@@ -41,7 +41,7 @@ function App() {
     return (
         <Theme.Provider value={memoTheme}>
             <div className={lightTheme ? 'App' : 'App _black'}>
-                <HashRouter>
+                <BrowserRouter>
                     <Suspense fallback={<Loader />}>
                         {isAuthenticating ? (
                             <Loader />
@@ -130,7 +130,7 @@ function App() {
                             </>
                         )}
                     </Suspense>
-                </HashRouter>
+                </BrowserRouter>
             </div>
         </Theme.Provider>
     )

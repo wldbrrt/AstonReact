@@ -3,6 +3,7 @@ import {
     IHistoryQueryParams,
     IUserFavoritesProps,
 } from '../../types/firestoreApiTypes'
+import { BackButton } from '../backButton/backButton'
 import React from 'react'
 
 interface IGameItem {
@@ -33,32 +34,35 @@ export const GameItem = ({
     email,
 }: IGameItem) => {
     return (
-        <div className='game'>
-            <h2 className='game__name'>{name}</h2>
-            <span className='game__rating'>Rating: {rating}/5</span>
-            <span className='game__date'>Released date:{releaseDate}</span>
-            <img
-                className='game__img'
-                src={image}
-                alt={name}
-            />
-            <button
-                disabled={!isAuth || isInFavorites}
-                className='game__add'
-                onClick={() => {
-                    triggerUpdate({
-                        id: String(gameId),
-                        email: email,
-                        name: name,
-                        background_image: image,
-                        date: getCurrentDate(),
-                    })
-                    triggerGet({ email: email })
-                }}
-            >
-                {isInFavorites ? 'In Favorites' : `Add to Favorite`}
-            </button>
-            <span className='game__description'>{description}</span>
-        </div>
+        <>
+            <BackButton />
+            <div className='game'>
+                <h2 className='game__name'>{name}</h2>
+                <span className='game__rating'>Rating: {rating}/5</span>
+                <span className='game__date'>Released date:{releaseDate}</span>
+                <img
+                    className='game__img'
+                    src={image}
+                    alt={name}
+                />
+                <button
+                    disabled={!isAuth || isInFavorites}
+                    className='game__add'
+                    onClick={() => {
+                        triggerUpdate({
+                            id: String(gameId),
+                            email: email,
+                            name: name,
+                            background_image: image,
+                            date: getCurrentDate(),
+                        })
+                        triggerGet({ email: email })
+                    }}
+                >
+                    {isInFavorites ? 'In Favorites' : `Add to Favorite`}
+                </button>
+                <span className='game__description'>{description}</span>
+            </div>
+        </>
     )
 }

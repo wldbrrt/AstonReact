@@ -209,6 +209,10 @@
         padding: 10px;
     }
 
+    .game__name {
+        text-align: center;
+    }
+
     .game__rating {
         font-size: 20px;
     }
