@@ -82,18 +82,20 @@ function HistoryList() {
 
     return (
         <div className='histotyList'>
-            <div className='historyList__backButton'>
-                <BackButton />
+            <div className='historyList__actionbar'>
+                <button
+                    onClick={async () => {
+                        await triggerDeleteHistory({ email: email })
+                        await triggerUpdateHistory({ email: email })
+                    }}
+                    className='historyList__button button'
+                >
+                    Clear history
+                </button>
+                <div className='historyList__backButton'>
+                    <BackButton />
+                </div>
             </div>
-            <button
-                onClick={async () => {
-                    await triggerDeleteHistory({ email: email })
-                    await triggerUpdateHistory({ email: email })
-                }}
-                className='historyList__button button'
-            >
-                Clear history
-            </button>
             <div className='historyList__container'>{content}</div>
         </div>
     )
