@@ -4,7 +4,13 @@ import { SignIn } from './pages/signin'
 import { useAuthorization, useFirebaseAuth } from './store/hooks'
 import { Loader } from './components/loader/loader'
 import { ErrorBoundary } from 'react-error-boundary'
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import {
+    BrowserRouter,
+    Routes,
+    Route,
+    Navigate,
+    HashRouter,
+} from 'react-router-dom'
 import React, { createContext, lazy, Suspense, useMemo, useState } from 'react'
 import './App.css'
 
@@ -35,7 +41,7 @@ function App() {
     return (
         <Theme.Provider value={memoTheme}>
             <div className={lightTheme ? 'App' : 'App _black'}>
-                <BrowserRouter>
+                <HashRouter>
                     <Suspense fallback={<Loader />}>
                         {isAuthenticating ? (
                             <Loader />
@@ -124,7 +130,7 @@ function App() {
                             </>
                         )}
                     </Suspense>
-                </BrowserRouter>
+                </HashRouter>
             </div>
         </Theme.Provider>
     )
