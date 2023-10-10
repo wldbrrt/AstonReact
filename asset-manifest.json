@@ -1,34 +1,35 @@
 {
   "files": {
     "main.css": "/AstonReact/static/css/main.d056ff2d.css",
-    "main.js": "/AstonReact/static/js/main.113b1221.js",
+    "main.js": "/AstonReact/static/js/main.aa494267.js",
     "static/css/461.eae99fca.chunk.css": "/AstonReact/static/css/461.eae99fca.chunk.css",
     "static/js/461.342a9903.chunk.js": "/AstonReact/static/js/461.342a9903.chunk.js",
     "static/css/518.58160117.chunk.css": "/AstonReact/static/css/518.58160117.chunk.css",
     "static/js/518.96a1e208.chunk.js": "/AstonReact/static/js/518.96a1e208.chunk.js",
     "static/css/880.6977bfdf.chunk.css": "/AstonReact/static/css/880.6977bfdf.chunk.css",
     "static/js/880.efd1d2ef.chunk.js": "/AstonReact/static/js/880.efd1d2ef.chunk.js",
-    "static/css/239.2a89ac32.chunk.css": "/AstonReact/static/css/239.2a89ac32.chunk.css",
-    "static/js/239.61a218a6.chunk.js": "/AstonReact/static/js/239.61a218a6.chunk.js",
+    "static/css/441.e8a1aad5.chunk.css": "/AstonReact/static/css/441.e8a1aad5.chunk.css",
+    "static/js/441.2041bbfe.chunk.js": "/AstonReact/static/js/441.2041bbfe.chunk.js",
     "static/js/787.deacaecf.chunk.js": "/AstonReact/static/js/787.deacaecf.chunk.js",
     "static/media/main_background.svg": "/AstonReact/static/media/main_background.bdfd9812b23acaecf9ff.svg",
     "static/media/GG_logo.svg": "/AstonReact/static/media/GG_logo.780af9d7f9d00db0d5edb6a4ed52003f.svg",
     "static/media/Rebellion-oPoA.ttf": "/AstonReact/static/media/Rebellion-oPoA.398489221b87268c489c.ttf",
+    "static/media/arrow_button.svg": "/AstonReact/static/media/arrow_button.f2dccfb270d77bbc15947f8512173088.svg",
     "index.html": "/AstonReact/index.html",
     "main.d056ff2d.css.map": "/AstonReact/static/css/main.d056ff2d.css.map",
-    "main.113b1221.js.map": "/AstonReact/static/js/main.113b1221.js.map",
+    "main.aa494267.js.map": "/AstonReact/static/js/main.aa494267.js.map",
     "461.eae99fca.chunk.css.map": "/AstonReact/static/css/461.eae99fca.chunk.css.map",
     "461.342a9903.chunk.js.map": "/AstonReact/static/js/461.342a9903.chunk.js.map",
     "518.58160117.chunk.css.map": "/AstonReact/static/css/518.58160117.chunk.css.map",
     "518.96a1e208.chunk.js.map": "/AstonReact/static/js/518.96a1e208.chunk.js.map",
     "880.6977bfdf.chunk.css.map": "/AstonReact/static/css/880.6977bfdf.chunk.css.map",
     "880.efd1d2ef.chunk.js.map": "/AstonReact/static/js/880.efd1d2ef.chunk.js.map",
-    "239.2a89ac32.chunk.css.map": "/AstonReact/static/css/239.2a89ac32.chunk.css.map",
-    "239.61a218a6.chunk.js.map": "/AstonReact/static/js/239.61a218a6.chunk.js.map",
+    "441.e8a1aad5.chunk.css.map": "/AstonReact/static/css/441.e8a1aad5.chunk.css.map",
+    "441.2041bbfe.chunk.js.map": "/AstonReact/static/js/441.2041bbfe.chunk.js.map",
     "787.deacaecf.chunk.js.map": "/AstonReact/static/js/787.deacaecf.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.d056ff2d.css",
-    "static/js/main.113b1221.js"
+    "static/js/main.aa494267.js"
   ]
 }
